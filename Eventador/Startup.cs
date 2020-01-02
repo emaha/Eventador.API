@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Builder;
+п»їusing Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
@@ -31,10 +31,13 @@ namespace Eventador
 
         public void ConfigureServices(IServiceCollection services)
         {
-            // Конфигурация БД контекста
+            // РљРѕРЅС„РёРіСѓСЂР°С†РёСЏ Р‘Р” РєРѕРЅС‚РµРєСЃС‚Р°
             //
             string connectionString = Configuration["DbConfig:DbConnectionStrings:Eventador"];
-            services.AddDbContext<EventadorDbContext>(options => options.UseNpgsql(connectionString));
+            services.AddDbContext<EventadorDbContext>(options => options.UseNpgsql(connectionString
+                    , x => x.MigrationsAssembly("Eventador"))
+            );
+
 
             services.AddControllers();
         }

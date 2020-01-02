@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Eventador.Services", "Event
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Eventador.Services.Contract", "Eventador.Services.Contract\Eventador.Services.Contract.csproj", "{586B9A52-4BC5-46FB-9799-66B71389D3DB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Eventador.Data.Migrations", "Eventador.Data.Migrations\Eventador.Data.Migrations.csproj", "{FCD290CC-62A7-450A-8820-296E5CB125B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Eventador.Data.Migrations", "Eventador.Data.Migrations\Eventador.Data.Migrations.csproj", "{1EB0896B-1E28-4990-9F68-EED4C2499A3D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,10 +47,10 @@ Global
 		{586B9A52-4BC5-46FB-9799-66B71389D3DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{586B9A52-4BC5-46FB-9799-66B71389D3DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{586B9A52-4BC5-46FB-9799-66B71389D3DB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FCD290CC-62A7-450A-8820-296E5CB125B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FCD290CC-62A7-450A-8820-296E5CB125B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FCD290CC-62A7-450A-8820-296E5CB125B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FCD290CC-62A7-450A-8820-296E5CB125B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EB0896B-1E28-4990-9F68-EED4C2499A3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EB0896B-1E28-4990-9F68-EED4C2499A3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EB0896B-1E28-4990-9F68-EED4C2499A3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EB0896B-1E28-4990-9F68-EED4C2499A3D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,19 @@
+﻿{
+  "Serilog": {
+    "Using": [ "Serilog.Sinks.Console" ],
+    "MinimumLevel": "Debug",
+    "WriteTo": [
+      {
+        "Name": "RollingFile",
+        "Args": {
+          "pathFormat": "/var/www/logs/eventador.ru/Eventador.Api-stage-{Date}.log",
+          "outputTemplate": "{Timestamp:yyyy-MM-dd HH:mm:ss.fff z} [{Level:u3}] {SourceContext}: {Message:lj}{NewLine}{Exception}"
+        }
+      }
+    ],
+    "Enrich": [ "FromLogContext", "WithMachineName", "WithThreadId" ],
+    "Properties": {
+      "Application": "Sample"
+    }
+  }
+}

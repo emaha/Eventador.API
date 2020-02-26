@@ -1,6 +1,7 @@
 ﻿using Eventador.Domain.Types;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
+using Eventador.Domain.Requests;
 
 namespace Eventador.Domain
 {
@@ -26,15 +27,13 @@ namespace Eventador.Domain
         /// Описание
         /// </summary>
         [Column("description")]
-        public string Description { get; set;}
-
+        public string Description { get; set; }
 
         /// <summary>
         /// Id категорий к которым  относится событие
         /// </summary>
-        [Column("category_ids")]
-        public long[] CategoryIds { get; set; }
-        public EventCategory[] Categories { get; set; }
+        [Column("event_type_ids")]
+        public EventType[] EventTypeIds { get; set; }
 
         /// <summary>
         /// Дата начала
@@ -52,13 +51,14 @@ namespace Eventador.Domain
         /// Широта
         /// </summary>
         [Column("lat")]
-        public float Lat { get; set; }
+        public float? Lat { get; set; }
 
         /// <summary>
         /// Долгота
         /// </summary>
         [Column("lon")]
-        public float Lon { get; set; }
+        public float? Lon { get; set; }
+
         //public string Route{get;set;} // набор точек, путь
 
         /// <summary>
@@ -73,6 +73,20 @@ namespace Eventador.Domain
         [Column("additional_info")]
         public string AdditionalInfo { get; set; }
 
-
+        public static Event CreateFromRequest(EventCreateRequest request)
+        {
+            return new Event
+            {
+                Title = request.Title,
+                Description = request.Description,
+                AdditionalInfo = request.AdditionalInfo,
+                AccessType = request.AccessType,
+                StartDate = request.StartDate,
+                EndDate = request.EndDate,
+                Lat = request.Lat,
+                Lon = request.Lon,
+                EventTypeIds = request.EventType
+            };
+        }
     }
 }

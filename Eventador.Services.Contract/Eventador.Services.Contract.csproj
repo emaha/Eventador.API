@@ -4,4 +4,13 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="refit" Version="5.0.23" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Eventador.Common\Eventador.Common.csproj" />
+    <ProjectReference Include="..\Eventador.Domain\Eventador.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

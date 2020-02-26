@@ -4,4 +4,9 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Eventador.Common\Eventador.Common.csproj" />
+    <ProjectReference Include="..\Eventador.Domain\Eventador.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

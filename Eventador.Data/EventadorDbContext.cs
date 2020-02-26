@@ -1,6 +1,5 @@
 ﻿using Eventador.Domain;
 using Microsoft.EntityFrameworkCore;
-using System;
 
 namespace Eventador.Data
 {
@@ -11,7 +10,6 @@ namespace Eventador.Data
         }
 
         public DbSet<Event> Events { get; set; }
-        public DbSet<EventCategory> Categories { get; set; }
         public DbSet<User> Users { get; set; }
     }
 }

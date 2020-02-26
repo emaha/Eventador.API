@@ -1,22 +1,35 @@
-using Microsoft.AspNetCore;
+﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using Serilog;
 using System.IO;
 using System.Net;
 
 namespace Eventador
 {
+    /// <summary>
+    ///
+    /// </summary>
     public class Program
     {
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="args"></param>
         public static void Main(string[] args)
         {
             BuildWebHost(args).Run();
         }
 
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="args"></param>
+        /// <returns></returns>
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
-                //.UseSerilog()
+                .UseSerilog()
                 .UseKestrel(
                     options =>
                     {

@@ -1,5 +1,7 @@
-﻿using Eventador.Models;
-using Eventador.Requests;
+﻿using Eventador.Domain;
+using Eventador.Domain.Requests;
+using Eventador.Models;
+using Eventador.Services.Contract;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -7,42 +9,65 @@ using System.Threading.Tasks;
 
 namespace Eventador.Controllers
 {
+    /// <summary>
+    ///
+    /// </summary>
     [ApiController]
     [Route("[controller]")]
     public class EventController : ControllerBase
     {
-        private static readonly string[] eventStrings = new[]
-        {
-            "Кибер турнир","Чья-то днюха","Пикник","Летский утренник"
-        };
+        private readonly IEventService _eventService;
 
-        [HttpGet]
-        public IActionResult Get()
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="eventService"></param>
+        public EventController(IEventService eventService)
         {
-            var txt = eventStrings[new Random().Next(eventStrings.Length)];
-            return Ok(txt);
+            _eventService = eventService;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="eventId"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<Event> Get(int eventId)
+        {
+            var evnt = await _eventService.GetById(eventId);
+            return evnt;
         }
 
         /// <summary>
         /// Получить события в регионе
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
-        public async Task<EventModel[]> GetEvent()
+        [HttpGet("All")]
+        public async Task<EventModel[]> GetEvents()
         {
+            var events = await _eventService.GetAll();
+
             List<EventModel> model = new List<EventModel>();
 
-            foreach (var item in eventStrings)
+            foreach (var item in events)
             {
-                model.Add(new EventModel { Title = item });
+                model.Add(new EventModel { Title = item.Title });
             }
 
             return model.ToArray();
         }
 
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> CreateEvent(CreateEventRequest request)
+        public async Task<IActionResult> CreateEvent(EventCreateRequest request)
         {
+            var createdEvent = Event.CreateFromRequest(request);
+            await _eventService.Add(createdEvent);
 
             return Ok();
         }

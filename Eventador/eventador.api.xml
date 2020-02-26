@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Eventador</name>
+    </assembly>
+    <members>
+        <member name="T:Eventador.Controllers.EventController">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Eventador.Controllers.EventController.#ctor(Eventador.Services.Contract.IEventService)">
+             <summary>
+            
+             </summary>
+             <param name="eventService"></param>
+        </member>
+        <member name="M:Eventador.Controllers.EventController.Get(System.Int32)">
+             <summary>
+            
+             </summary>
+             <param name="eventId"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Eventador.Controllers.EventController.GetEvents">
+            <summary>
+            Получить события в регионе
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Eventador.Controllers.EventController.CreateEvent(Eventador.Domain.Requests.EventCreateRequest)">
+             <summary>
+            
+             </summary>
+             <param name="request"></param>
+             <returns></returns>
+        </member>
+        <member name="T:Eventador.Controllers.UserController">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Eventador.Controllers.UserController.Get">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:Eventador.Controllers.UserController.Create">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:Eventador.Controllers.UserController.Update">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:Eventador.Controllers.UserController.Block">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:Eventador.Controllers.UserController.Unblock">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="T:Eventador.Models.EventModel">
+            <summary>
+            Упрощенная модель события
+            </summary>
+        </member>
+        <member name="P:Eventador.Models.EventModel.Title">
+            <summary>
+            Заголовок
+            </summary>
+        </member>
+        <member name="T:Eventador.Program">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Eventador.Program.Main(System.String[])">
+             <summary>
+            
+             </summary>
+             <param name="args"></param>
+        </member>
+        <member name="M:Eventador.Program.BuildWebHost(System.String[])">
+             <summary>
+            
+             </summary>
+             <param name="args"></param>
+             <returns></returns>
+        </member>
+        <member name="P:Eventador.Startup.Environment">
+            <summary>
+            Environment
+            </summary>
+        </member>
+        <member name="P:Eventador.Startup.Configuration">
+            <summary>
+            Конфигурация приложения
+            </summary>
+        </member>
+        <member name="M:Eventador.Startup.GetRetryPolicy">
+            <summary>
+            Базовая политика повторов с колебанием задержки
+            <remarks>Политики, заданные с помощью этого метода расширения, обрабатывают HttpRequestException,
+            ответы HTTP 5xx и ответы HTTP 408</remarks>
+            </summary>
+        </member>
+        <member name="M:Eventador.Startup.RegisterHealthChecks(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Регистрация сервиса мониторинга работоспособности
+            </summary>
+            <param name="services"></param>
+        </member>
+    </members>
+</doc>

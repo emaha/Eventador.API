@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Eventador.Services.Contract.Api;
+using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 namespace Eventador.Controllers
@@ -15,9 +16,14 @@ namespace Eventador.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public IActionResult Get()
+        public async Task<UserResponseModel> Get()
         {
-            return Ok("ASD");
+            var model = new UserResponseModel()
+            {
+                Name = "ASDASDASDD"
+            };
+
+            return model;
         }
 
         /// <summary>

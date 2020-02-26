@@ -1,0 +1,16 @@
+[Unit]
+Description=api.eventador.ru service
+
+[Service]
+ExecStart=/usr/bin/dotnet /var/www/sites/api.eventador.ru/Eventador.dll
+WorkingDirectory=/var/www/sites/api.eventador.ru
+Restart=always
+# Restart service after 10 seconds if the dotnet service crashes:
+RestartSec=10
+KillSignal=SIGINT
+SyslogIdentifier=api-eventador
+User=root
+Environment=ASPNETCORE_ENVIRONMENT=Production
+
+[Install]
+WantedBy=multi-user.target

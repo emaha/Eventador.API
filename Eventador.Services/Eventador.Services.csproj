@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Eventador.Common\Eventador.Common.csproj" />
+    <ProjectReference Include="..\Eventador.Data.Contract\Eventador.Data.Contract.csproj" />
     <ProjectReference Include="..\Eventador.Domain\Eventador.Domain.csproj" />
     <ProjectReference Include="..\Eventador.Services.Contract\Eventador.Services.Contract.csproj" />
   </ItemGroup>

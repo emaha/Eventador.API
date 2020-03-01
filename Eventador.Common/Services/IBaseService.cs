@@ -32,14 +32,14 @@ namespace Eventador.Common.Services
         /// </summary>
         /// <param name="entity">Добавляемая сущность</param>
         /// <returns>Количество добавленных объектов</returns>
-        Task<int> Add([JetBrains.Annotations.NotNull] TEntity entity);
+        Task<int> Add([NotNull] TEntity entity);
 
         /// <summary>
         /// Обновить сущность
         /// </summary>
         /// <param name="entity">Обновляемая сущность</param>
         /// <returns>Количество обновлённых объектов</returns>
-        Task<int> Update([JetBrains.Annotations.NotNull] TEntity entity);
+        Task<int> Update([NotNull] TEntity entity);
 
         /// <summary>
         /// Удалить сущности

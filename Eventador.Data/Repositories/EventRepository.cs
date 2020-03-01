@@ -2,7 +2,7 @@
 using Eventador.Data.Contract;
 using Eventador.Domain;
 
-namespace Eventador.Data
+namespace Eventador.Data.Repositories
 {
     public class EventRepository : BaseRepository<Event>, IEventRepository
     {

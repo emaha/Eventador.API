@@ -1,11 +1,15 @@
-﻿using Eventador.Data;
+﻿using Eventador.Common.Middlewares;
+using Eventador.Data;
 using Eventador.Data.Contract;
+using Eventador.Data.Repositories;
 using Eventador.Services;
 using Eventador.Services.Contract;
 using Eventador.Services.Contract.Api;
 using Eventador.Services.Options;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,19 +21,22 @@ using Refit;
 using Serilog;
 using System;
 using System.Globalization;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using Eventador.Common.Middlewares;
-using Microsoft.AspNetCore.HttpOverrides;
-using Microsoft.AspNetCore.Localization;
 
 namespace Eventador
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class Startup
     {
         private const string ConfigurationConnectionStringRedis = "Redis:ConnectionString";
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="env"></param>
         public Startup(IWebHostEnvironment env)
         {
             var builder = new ConfigurationBuilder()
@@ -41,7 +48,7 @@ namespace Eventador
                 .AddEnvironmentVariables();
 
             Configuration = builder.Build();
-            this.Environment = env;
+            Environment = env;
 
             Log.Logger = new LoggerConfiguration()
                 .ReadFrom.Configuration(Configuration)
@@ -58,6 +65,10 @@ namespace Eventador
         /// </summary>
         public IConfiguration Configuration { get; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
             // Конфигурация БД контекста
@@ -70,9 +81,8 @@ namespace Eventador
 
             RegisterHealthChecks(services);
 
-            RegisterRepositories(services);
-
             RegisterServices(services);
+            RegisterRepositories(services);
 
             RegisterRemoteServices(services);
 
@@ -114,6 +124,12 @@ namespace Eventador
             services.AddControllers();
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="env"></param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

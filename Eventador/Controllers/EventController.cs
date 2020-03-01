@@ -3,7 +3,6 @@ using Eventador.Domain.Requests;
 using Eventador.Models;
 using Eventador.Services.Contract;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -16,6 +15,12 @@ namespace Eventador.Controllers
     [Route("[controller]")]
     public class EventController : ControllerBase
     {
+        private string[] fakeEvents = {
+            "Кибер турнир","Чья-то днюха",
+            "Пикник","Детский утренник", "Стритрейсинг",
+            "Велопробежка","Курсы программирования", "Совместные закупки"        
+        };
+
         private readonly IEventService _eventService;
 
         /// <summary>
@@ -33,10 +38,13 @@ namespace Eventador.Controllers
         /// <param name="eventId"></param>
         /// <returns></returns>
         [HttpGet]
-        public async Task<Event> Get(int eventId)
+        public async Task<EventModel> Get(int eventId)
         {
             var evnt = await _eventService.GetById(eventId);
-            return evnt;
+
+            var model = EventModel.Create(evnt);
+
+            return model;
         }
 
         /// <summary>
@@ -46,13 +54,13 @@ namespace Eventador.Controllers
         [HttpGet("All")]
         public async Task<EventModel[]> GetEvents()
         {
-            var events = await _eventService.GetAll();
+            //var events = await _eventService.GetAll();
 
             List<EventModel> model = new List<EventModel>();
 
-            foreach (var item in events)
+            foreach (var item in fakeEvents)
             {
-                model.Add(new EventModel { Title = item.Title });
+                model.Add(new EventModel { Title = item });
             }
 
             return model.ToArray();
@@ -66,8 +74,36 @@ namespace Eventador.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateEvent(EventCreateRequest request)
         {
-            var createdEvent = Event.CreateFromRequest(request);
+            var createdEvent = Event.Create(request);
             await _eventService.Add(createdEvent);
+
+            return Ok();
+        }
+
+        /// <summary>
+        /// Завершить событие
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<IActionResult> FinishEvent(int id)
+        {
+            var evnt = await _eventService.GetById(id);
+            evnt.Finish();
+
+
+            return Ok();
+        }
+
+        /// <summary>
+        /// Оценить событие
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public async Task<IActionResult> RateEvent(RateEventCreateRequest request)
+        {
+            Rate rate = Rate.CreateFromRequest(request);
+
+            // TODO: проверить на уже существующие оценки и добавдение оценки
 
             return Ok();
         }

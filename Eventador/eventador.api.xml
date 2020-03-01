@@ -35,6 +35,20 @@
              <param name="request"></param>
              <returns></returns>
         </member>
+        <member name="M:Eventador.Controllers.EventController.FinishEvent(System.Int32)">
+            <summary>
+            Завершить событие
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Eventador.Controllers.EventController.RateEvent(Eventador.Domain.Requests.RateEventCreateRequest)">
+            <summary>
+            Оценить событие
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
         <member name="T:Eventador.Controllers.UserController">
              <summary>
             
@@ -80,6 +94,13 @@
             Заголовок
             </summary>
         </member>
+        <member name="M:Eventador.Models.EventModel.Create(Eventador.Domain.Event)">
+            <summary>
+            
+            </summary>
+            <param name="evnt"></param>
+            <returns></returns>
+        </member>
         <member name="T:Eventador.Program">
              <summary>
             
@@ -98,6 +119,17 @@
              <param name="args"></param>
              <returns></returns>
         </member>
+        <member name="T:Eventador.Startup">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Eventador.Startup.#ctor(Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            
+            </summary>
+            <param name="env"></param>
+        </member>
         <member name="P:Eventador.Startup.Environment">
             <summary>
             Environment
@@ -107,6 +139,19 @@
             <summary>
             Конфигурация приложения
             </summary>
+        </member>
+        <member name="M:Eventador.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:Eventador.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
         </member>
         <member name="M:Eventador.Startup.GetRetryPolicy">
             <summary>

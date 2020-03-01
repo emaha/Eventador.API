@@ -36,6 +36,12 @@ namespace Eventador.Domain
         public EventType[] EventTypeIds { get; set; }
 
         /// <summary>
+        /// Статус события
+        /// </summary>
+        [Column("event_status")]
+        public EventStatus EventStatus { get; set; }
+
+        /// <summary>
         /// Дата начала
         /// </summary>
         [Column("start_date")]
@@ -59,6 +65,17 @@ namespace Eventador.Domain
         [Column("lon")]
         public float? Lon { get; set; }
 
+        /// <summary>
+        /// Дата создания
+        /// </summary>
+        public DateTime CreateDate { get; set; }
+
+        /// <summary>
+        /// Id аккаунта создателя
+        /// </summary>
+        [Column("Author_id")]
+        public int AuthorId { get; set; }
+
         //public string Route{get;set;} // набор точек, путь
 
         /// <summary>
@@ -73,8 +90,12 @@ namespace Eventador.Domain
         [Column("additional_info")]
         public string AdditionalInfo { get; set; }
 
-        public static Event CreateFromRequest(EventCreateRequest request)
+        public static Event Create(EventCreateRequest request)
         {
+
+            //TODO: author id
+            int authorId = 0;
+
             return new Event
             {
                 Title = request.Title,
@@ -85,8 +106,16 @@ namespace Eventador.Domain
                 EndDate = request.EndDate,
                 Lat = request.Lat,
                 Lon = request.Lon,
-                EventTypeIds = request.EventType
+                EventTypeIds = request.EventType,
+                EventStatus = EventStatus.ACTIVE,
+                CreateDate = DateTime.UtcNow,
+                AuthorId = authorId
             };
+        }
+
+        public void Finish()
+        {
+            EventStatus = EventStatus.FINISHED;
         }
     }
 }

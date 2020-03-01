@@ -113,6 +113,18 @@ namespace Eventador.Domain
             };
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        public void Update(EventUpdateRequest request)
+        {
+            // TODO: 
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public void Finish()
         {
             EventStatus = EventStatus.FINISHED;

@@ -15,11 +15,11 @@
              </summary>
              <param name="eventService"></param>
         </member>
-        <member name="M:Eventador.Controllers.EventController.Get(System.Int32)">
+        <member name="M:Eventador.Controllers.EventController.GetById(System.Int32)">
              <summary>
             
              </summary>
-             <param name="eventId"></param>
+             <param name="id"></param>
              <returns></returns>
         </member>
         <member name="M:Eventador.Controllers.EventController.GetEvents">
@@ -35,6 +35,13 @@
              <param name="request"></param>
              <returns></returns>
         </member>
+        <member name="M:Eventador.Controllers.EventController.UpdateEvent(Eventador.Domain.Requests.EventUpdateRequest)">
+            <summary>
+            
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
         <member name="M:Eventador.Controllers.EventController.FinishEvent(System.Int32)">
             <summary>
             Завершить событие
@@ -42,7 +49,12 @@
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:Eventador.Controllers.EventController.RateEvent(Eventador.Domain.Requests.RateEventCreateRequest)">
+        <member name="T:Eventador.Controllers.FeedBackCpontroller">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Eventador.Controllers.FeedBackCpontroller.RateEvent(Eventador.Domain.Requests.RateEventCreateRequest)">
             <summary>
             Оценить событие
             </summary>

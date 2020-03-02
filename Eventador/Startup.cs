@@ -27,14 +27,14 @@ using System.Net.Http.Headers;
 namespace Eventador
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class Startup
     {
         private const string ConfigurationConnectionStringRedis = "Redis:ConnectionString";
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="env"></param>
         public Startup(IWebHostEnvironment env)
@@ -66,7 +66,7 @@ namespace Eventador
         public IConfiguration Configuration { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
@@ -75,7 +75,7 @@ namespace Eventador
             //
             string connectionString = Configuration["DbConfig:DbConnectionStrings:Eventador"];
             services.AddDbContext<EventadorDbContext>(options => options.UseNpgsql(connectionString
-                    , x => x.MigrationsAssembly("Eventador")));
+                    , x => x.MigrationsAssembly("Eventador.Data.Migrations")));
 
             RegisterOptions(services);
 
@@ -124,9 +124,8 @@ namespace Eventador
             services.AddControllers();
         }
 
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="app"></param>
         /// <param name="env"></param>

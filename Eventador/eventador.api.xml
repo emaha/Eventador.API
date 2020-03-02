@@ -5,22 +5,22 @@
     </assembly>
     <members>
         <member name="T:Eventador.Controllers.EventController">
-             <summary>
-            
-             </summary>
+            <summary>
+            Контроллер событий
+            </summary>
         </member>
         <member name="M:Eventador.Controllers.EventController.#ctor(Eventador.Services.Contract.IEventService)">
-             <summary>
-            
-             </summary>
-             <param name="eventService"></param>
+            <summary>
+            ctor
+            </summary>
+            <param name="eventService"></param>
         </member>
         <member name="M:Eventador.Controllers.EventController.GetById(System.Int32)">
-             <summary>
-            
-             </summary>
-             <param name="id"></param>
-             <returns></returns>
+            <summary>
+            Получить по id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
         </member>
         <member name="M:Eventador.Controllers.EventController.GetEvents">
             <summary>
@@ -29,22 +29,22 @@
             <returns></returns>
         </member>
         <member name="M:Eventador.Controllers.EventController.CreateEvent(Eventador.Domain.Requests.EventCreateRequest)">
-             <summary>
-            
-             </summary>
-             <param name="request"></param>
-             <returns></returns>
+            <summary>
+            Создание события
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
         </member>
         <member name="M:Eventador.Controllers.EventController.UpdateEvent(Eventador.Domain.Requests.EventUpdateRequest)">
             <summary>
-            
+            Изменение события
             </summary>
             <param name="request"></param>
             <returns></returns>
         </member>
         <member name="M:Eventador.Controllers.EventController.FinishEvent(System.Int32)">
             <summary>
-            Завершить событие
+            Завершение события
             </summary>
             <param name="id"></param>
             <returns></returns>
@@ -113,6 +113,28 @@
             <param name="evnt"></param>
             <returns></returns>
         </member>
+        <member name="T:Eventador.Models.SmallEventModel">
+            <summary>
+            Упрощенная модель события
+            </summary>
+        </member>
+        <member name="P:Eventador.Models.SmallEventModel.Id">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Eventador.Models.SmallEventModel.Title">
+            <summary>
+            Заголовок
+            </summary>
+        </member>
+        <member name="M:Eventador.Models.SmallEventModel.Create(Eventador.Domain.Event)">
+             <summary>
+            
+             </summary>
+             <param name="evnt"></param>
+             <returns></returns>
+        </member>
         <member name="T:Eventador.Program">
              <summary>
             
@@ -132,15 +154,15 @@
              <returns></returns>
         </member>
         <member name="T:Eventador.Startup">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="M:Eventador.Startup.#ctor(Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
-            <summary>
+             <summary>
             
-            </summary>
-            <param name="env"></param>
+             </summary>
+             <param name="env"></param>
         </member>
         <member name="P:Eventador.Startup.Environment">
             <summary>
@@ -153,17 +175,17 @@
             </summary>
         </member>
         <member name="M:Eventador.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
-            <summary>
+             <summary>
             
-            </summary>
-            <param name="services"></param>
+             </summary>
+             <param name="services"></param>
         </member>
         <member name="M:Eventador.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
-            <summary>
+             <summary>
             
-            </summary>
-            <param name="app"></param>
-            <param name="env"></param>
+             </summary>
+             <param name="app"></param>
+             <param name="env"></param>
         </member>
         <member name="M:Eventador.Startup.GetRetryPolicy">
             <summary>

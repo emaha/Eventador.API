@@ -3,28 +3,22 @@ using Eventador.Domain.Requests;
 using Eventador.Models;
 using Eventador.Services.Contract;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Eventador.Controllers
 {
     /// <summary>
-    ///
+    /// Контроллер событий
     /// </summary>
     [ApiController]
     [Route("[controller]")]
     public class EventController : ControllerBase
     {
-        private string[] fakeEvents = {
-            "Кибер турнир","Чья-то днюха",
-            "Пикник","Детский утренник", "Стритрейсинг",
-            "Велопробежка","Курсы программирования", "Совместные закупки"        
-        };
-
         private readonly IEventService _eventService;
 
         /// <summary>
-        ///
+        /// ctor
         /// </summary>
         /// <param name="eventService"></param>
         public EventController(IEventService eventService)
@@ -33,7 +27,7 @@ namespace Eventador.Controllers
         }
 
         /// <summary>
-        ///
+        /// Получить по id
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -41,7 +35,6 @@ namespace Eventador.Controllers
         public async Task<EventModel> GetById(int id)
         {
             var evnt = await _eventService.GetById(id);
-
             var model = EventModel.Create(evnt);
 
             return model;
@@ -54,20 +47,13 @@ namespace Eventador.Controllers
         [HttpGet("All")]
         public async Task<SmallEventModel[]> GetEvents()
         {
-            //var events = await _eventService.GetAll();
+            var events = await _eventService.GetAll();
 
-            var model = new List<SmallEventModel>();
-
-            foreach (var item in fakeEvents)
-            {
-                model.Add(new SmallEventModel { Title = item });
-            }
-
-            return model.ToArray();
+            return events.Select(SmallEventModel.Create).ToArray();
         }
 
         /// <summary>
-        ///
+        /// Создание события
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
@@ -81,7 +67,7 @@ namespace Eventador.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Изменение события
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
@@ -99,7 +85,7 @@ namespace Eventador.Controllers
         }
 
         /// <summary>
-        /// Завершить событие
+        /// Завершение события
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -109,10 +95,7 @@ namespace Eventador.Controllers
             var evnt = await _eventService.GetById(id);
             evnt.Finish();
 
-
             return Ok();
         }
-
-        
     }
 }

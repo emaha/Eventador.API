@@ -8,23 +8,23 @@ namespace Eventador.Models
     public class SmallEventModel
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public int Id { get; set; }
-        
+
         /// <summary>
         /// Заголовок
         /// </summary>
         public string Title { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="evnt"></param>
         /// <returns></returns>
-        public static EventModel Create(Event evnt)
+        public static SmallEventModel Create(Event evnt)
         {
-            return new EventModel
+            return new SmallEventModel
             {
                 Title = evnt.Title
             };

@@ -30,10 +30,16 @@ namespace Eventador.Domain
         public string Description { get; set; }
 
         /// <summary>
+        /// Дополнительная информация
+        /// </summary>
+        [Column("additional_info")]
+        public string AdditionalInfo { get; set; }
+
+        /// <summary>
         /// Id категорий к которым  относится событие
         /// </summary>
-        [Column("event_type_ids")]
-        public EventType[] EventTypeIds { get; set; }
+        [Column("event_type")]
+        public EventType EventType { get; set; }
 
         /// <summary>
         /// Статус события
@@ -68,12 +74,13 @@ namespace Eventador.Domain
         /// <summary>
         /// Дата создания
         /// </summary>
+        [Column("create_date")]
         public DateTime CreateDate { get; set; }
 
         /// <summary>
         /// Id аккаунта создателя
         /// </summary>
-        [Column("Author_id")]
+        [Column("author_id")]
         public int AuthorId { get; set; }
 
         //public string Route{get;set;} // набор точек, путь
@@ -84,15 +91,8 @@ namespace Eventador.Domain
         [Column("access_type")]
         public AccessType AccessType { get; set; }
 
-        /// <summary>
-        /// Дополнительная информация
-        /// </summary>
-        [Column("additional_info")]
-        public string AdditionalInfo { get; set; }
-
         public static Event Create(EventCreateRequest request)
         {
-
             //TODO: author id
             int authorId = 0;
 
@@ -106,7 +106,7 @@ namespace Eventador.Domain
                 EndDate = request.EndDate,
                 Lat = request.Lat,
                 Lon = request.Lon,
-                EventTypeIds = request.EventType,
+                EventType = request.EventType,
                 EventStatus = EventStatus.ACTIVE,
                 CreateDate = DateTime.UtcNow,
                 AuthorId = authorId
@@ -114,16 +114,16 @@ namespace Eventador.Domain
         }
 
         /// <summary>
-        /// 
+        /// Обновить
         /// </summary>
         /// <param name="request"></param>
         public void Update(EventUpdateRequest request)
         {
-            // TODO: 
+            // TODO:
         }
 
         /// <summary>
-        /// 
+        /// Завершить
         /// </summary>
         public void Finish()
         {

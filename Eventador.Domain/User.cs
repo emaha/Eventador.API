@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Eventador.Domain
 {
     /// <summary>
-    /// Пользователь (карточка пользоавтеля)
+    /// Пользователь (карточка пользователя)
     /// </summary>
     [Table("users")]
     public class User
@@ -19,7 +19,7 @@ namespace Eventador.Domain
         /// Фамилия
         /// </summary>
         [Column("last_name")]
-        public string Lastname { get; set; }
+        public string LastName { get; set; }
 
         /// <summary>
         /// Имя
@@ -31,7 +31,7 @@ namespace Eventador.Domain
         /// Отчество
         /// </summary>
         [Column("middle_name")]
-        public string Middlename { get; set; }
+        public string MiddleName { get; set; }
 
         /// <summary>
         /// Тип пользователя
@@ -46,7 +46,7 @@ namespace Eventador.Domain
         public string OrganizationName { get; set; }
 
         /// <summary>
-        /// Контанктный телефон
+        /// Контактный телефон
         /// </summary>
         [Column("phone")]
         public string Phone { get; set; }
@@ -56,6 +56,5 @@ namespace Eventador.Domain
         /// </summary>
         [Column("about_info")]
         public string AboutInfo { get; set; }
-
     }
 }

@@ -10,6 +10,16 @@
           "pathFormat": "Logs/Eventador.Api-dev-{Date}.log",
           "outputTemplate": "{Timestamp:yyyy-MM-dd HH:mm:ss.fff z} [{Level:u3}] {SourceContext}: {Message:lj}{NewLine}{Exception}"
         }
+      },
+      {
+        "Name": "Async",
+        "Args": {
+          "configure": [
+            {
+              "Name": "RollingFile"
+            }
+          ]
+        }
       }
     ],
     "Enrich": [ "FromLogContext", "WithMachineName", "WithThreadId" ],

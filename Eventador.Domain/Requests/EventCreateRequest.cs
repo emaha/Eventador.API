@@ -11,7 +11,7 @@ namespace Eventador.Domain.Requests
         public string Title { get; set; }
         public string Description { get; set; }
         public string AdditionalInfo { get; set; }
-        public EventType[] EventType { get; set; }
+        public EventType EventType { get; set; }
         public AccessType AccessType { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }

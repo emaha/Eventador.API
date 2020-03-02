@@ -1,0 +1,2 @@
+dotnet ef migrations add MigrationName -s .\Eventador\Eventador.csproj --project .\Eventador.Data.Migrations\
+dotnet ef database update -s .\Eventador\Eventador.csproj --project .\Eventador.Data.Migrations\

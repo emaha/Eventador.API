@@ -9,6 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\**" />
+    <Content Remove="Migrations\**" />
+    <EmbeddedResource Remove="Migrations\**" />
+    <None Remove="Migrations\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="eventador.api.xml" />
   </ItemGroup>
 
@@ -36,14 +43,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Eventador.Data.Migrations\Eventador.Data.Migrations.csproj" />
     <ProjectReference Include="..\Eventador.Data\Eventador.Data.csproj" />
     <ProjectReference Include="..\Eventador.Services.Contract\Eventador.Services.Contract.csproj" />
     <ProjectReference Include="..\Eventador.Services\Eventador.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Migrations\" />
     <Folder Include="Requests\" />
+    <Folder Include="Logs\" />
   </ItemGroup>
 
 

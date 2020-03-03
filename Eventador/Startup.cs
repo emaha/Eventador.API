@@ -23,6 +23,7 @@ using System;
 using System.Globalization;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using Eventador.Middlewares;
 
 namespace Eventador
 {
@@ -72,7 +73,6 @@ namespace Eventador
         public void ConfigureServices(IServiceCollection services)
         {
             // Конфигурация БД контекста
-            //
             string connectionString = Configuration["DbConfig:DbConnectionStrings:Eventador"];
             services.AddDbContext<EventadorDbContext>(options => options.UseNpgsql(connectionString
                     , x => x.MigrationsAssembly("Eventador.Data.Migrations")));
@@ -105,6 +105,21 @@ namespace Eventador
                     Type = SecuritySchemeType.ApiKey
                 });
 
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            }
+                        },
+                        new string[] {}
+                    }
+                });
+
                 c.IncludeXmlComments($@"{AppDomain.CurrentDomain.BaseDirectory}eventador.api.xml");
             });
 
@@ -131,7 +146,7 @@ namespace Eventador
         /// <param name="env"></param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
+            if (env.IsDevelopment() || env.IsStaging())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
@@ -147,6 +162,8 @@ namespace Eventador
             app.UseRouting();
             app.UseAuthorization();
             app.UseIpEnrichLog();
+
+            //app.UseMiddleware<TokenAuthenticationMiddleware>();
 
             var supportedCultures = new[] { new CultureInfo("ru-RU") };
             app.UseRequestLocalization(new RequestLocalizationOptions

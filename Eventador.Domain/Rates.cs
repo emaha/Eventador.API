@@ -1,8 +1,8 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
-using Eventador.API.Domain.Requests;
+using Eventador.Domain.Requests;
 
-namespace Eventador.API.Domain
+namespace Eventador.Domain
 {
     /// <summary>
     /// Оценки

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Eventador.API.Services.Options
+﻿namespace Eventador.Services.Options
 {
     public class ServiceOption
     {

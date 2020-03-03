@@ -1,4 +1,4 @@
-﻿namespace Eventador.API.Common.Data.Entity
+﻿namespace Eventador.Common.Data.Entity
 {
     /// <summary>
     /// Интерфейс базовой сущности

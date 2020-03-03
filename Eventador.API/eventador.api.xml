@@ -9,7 +9,7 @@
             Контроллер событий
             </summary>
         </member>
-        <member name="M:Eventador.API.Controllers.EventController.#ctor(Eventador.API.Services.Contract.IEventService)">
+        <member name="M:Eventador.API.Controllers.EventController.#ctor(Eventador.Services.Contract.IEventService)">
             <summary>
             ctor
             </summary>
@@ -28,14 +28,14 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Eventador.API.Controllers.EventController.CreateEvent(Eventador.API.Domain.Requests.EventCreateRequest)">
+        <member name="M:Eventador.API.Controllers.EventController.CreateEvent(Eventador.Domain.Requests.EventCreateRequest)">
             <summary>
             Создание события
             </summary>
             <param name="request"></param>
             <returns></returns>
         </member>
-        <member name="M:Eventador.API.Controllers.EventController.UpdateEvent(Eventador.API.Domain.Requests.EventUpdateRequest)">
+        <member name="M:Eventador.API.Controllers.EventController.UpdateEvent(Eventador.Domain.Requests.EventUpdateRequest)">
             <summary>
             Изменение события
             </summary>
@@ -54,7 +54,7 @@
             
              </summary>
         </member>
-        <member name="M:Eventador.API.Controllers.FeedBackCpontroller.RateEvent(Eventador.API.Domain.Requests.RateEventCreateRequest)">
+        <member name="M:Eventador.API.Controllers.FeedBackCpontroller.RateEvent(Eventador.Domain.Requests.RateEventCreateRequest)">
             <summary>
             Оценить событие
             </summary>
@@ -121,7 +121,7 @@
             Заголовок
             </summary>
         </member>
-        <member name="M:Eventador.API.Models.EventModel.Create(Eventador.API.Domain.Event)">
+        <member name="M:Eventador.API.Models.EventModel.Create(Eventador.Domain.Event)">
              <summary>
             
              </summary>
@@ -143,7 +143,7 @@
             Заголовок
             </summary>
         </member>
-        <member name="M:Eventador.API.Models.SmallEventModel.Create(Eventador.API.Domain.Event)">
+        <member name="M:Eventador.API.Models.SmallEventModel.Create(Eventador.Domain.Event)">
              <summary>
             
              </summary>

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
-using Eventador.API.Domain.Requests;
-using Eventador.API.Domain.Types;
+using Eventador.Domain.Requests;
+using Eventador.Domain.Types;
 
-namespace Eventador.API.Domain
+namespace Eventador.Domain
 {
     /// <summary>
     /// Событие
@@ -58,6 +58,11 @@ namespace Eventador.API.Domain
         /// </summary>
         [Column("end_date")]
         public DateTime EndDate { get; set; }
+
+        /// <summary>
+        /// Регион
+        /// </summary>
+        public int RegionId { get; set; }
 
         /// <summary>
         /// Широта
@@ -119,6 +124,11 @@ namespace Eventador.API.Domain
         /// <param name="request"></param>
         public void Update(EventUpdateRequest request)
         {
+            if (request == null) return;
+
+            Title = request.Title;
+            Description = request.Description;
+
             // TODO:
         }
 

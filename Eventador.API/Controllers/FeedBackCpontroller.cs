@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using Eventador.API.Domain;
-using Eventador.API.Domain.Requests;
+using Eventador.Domain;
+using Eventador.Domain.Requests;
 
 namespace Eventador.API.Controllers
 {

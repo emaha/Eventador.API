@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Serilog.Context;
 using System.Threading.Tasks;
 
-namespace Eventador.API.Common.Middlewares
+namespace Eventador.Common.Middlewares
 {
     [PublicAPI]
     public class IpEnrichLogMiddleware

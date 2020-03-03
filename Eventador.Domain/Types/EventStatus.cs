@@ -1,4 +1,4 @@
-﻿namespace Eventador.API.Domain.Types
+﻿namespace Eventador.Domain.Types
 {
     public enum EventStatus
     {

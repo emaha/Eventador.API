@@ -1,4 +1,4 @@
-﻿namespace Eventador.API.Domain.Requests
+﻿namespace Eventador.Domain.Requests
 {
     public class RateEventCreateRequest
     {

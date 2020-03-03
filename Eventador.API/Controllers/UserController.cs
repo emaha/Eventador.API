@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using Eventador.API.Services.Contract.Api;
+using Eventador.Services.Contract.Api;
 
 namespace Eventador.API.Controllers
 {

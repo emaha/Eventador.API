@@ -1,10 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Eventador.API.Models;
+using Eventador.Services.Contract;
+using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Threading.Tasks;
-using Eventador.API.Domain;
-using Eventador.API.Domain.Requests;
-using Eventador.API.Models;
-using Eventador.API.Services.Contract;
+using Eventador.Domain;
+using Eventador.Domain.Requests;
 
 namespace Eventador.API.Controllers
 {
@@ -47,7 +47,10 @@ namespace Eventador.API.Controllers
         [HttpGet("All")]
         public async Task<SmallEventModel[]> GetEvents()
         {
-            var events = await _eventService.GetAll();
+            //TODO: получить текущий регион для местоположения
+            int regionId = 1;
+
+            var events = await _eventService.GetByRegion(regionId);
 
             return events.Select(SmallEventModel.Create).ToArray();
         }

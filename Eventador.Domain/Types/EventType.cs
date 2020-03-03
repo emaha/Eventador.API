@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Eventador.API.Domain.Types
+﻿namespace Eventador.Domain.Types
 {
     /// <summary>
     /// Тип/Категория события

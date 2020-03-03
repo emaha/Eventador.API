@@ -1,7 +1,7 @@
-﻿namespace Eventador.API.Domain.Types
+﻿namespace Eventador.Domain.Types
 {
     /// <summary>
-    /// Уровень досупа к собитию
+    /// Уровень доступа к событию
     /// </summary>
     public enum AccessType
     {

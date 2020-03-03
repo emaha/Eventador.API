@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Eventador.Common.Repositories;
 using System.Threading.Tasks;
-using Eventador.API.Common.Repositories;
 
-namespace Eventador.API.Common.Services
+namespace Eventador.Common.Services
 {
     /// <summary>
     /// Базовый сервис для сущности типа {TEntity}

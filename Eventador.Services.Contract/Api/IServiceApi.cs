@@ -1,7 +1,7 @@
-﻿using Refit;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using Refit;
 
-namespace Eventador.API.Services.Contract.Api
+namespace Eventador.Services.Contract.Api
 {
     public interface IServiceApi
     {

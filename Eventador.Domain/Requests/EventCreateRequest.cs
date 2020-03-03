@@ -1,7 +1,7 @@
-﻿using System;
-using Eventador.API.Domain.Types;
+﻿using Eventador.Domain.Types;
+using System;
 
-namespace Eventador.API.Domain.Requests
+namespace Eventador.Domain.Requests
 {
     /// <summary>
     /// Запрос на создание события

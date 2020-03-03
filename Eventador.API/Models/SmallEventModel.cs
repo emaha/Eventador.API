@@ -1,4 +1,4 @@
-﻿using Eventador.API.Domain;
+﻿using Eventador.Domain;
 
 namespace Eventador.API.Models
 {

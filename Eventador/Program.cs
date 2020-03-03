@@ -4,7 +4,7 @@ using Serilog;
 using System.IO;
 using System.Net;
 
-namespace Eventador
+namespace Eventador.API
 {
     /// <summary>
     ///

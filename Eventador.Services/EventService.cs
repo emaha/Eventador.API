@@ -1,10 +1,10 @@
-﻿using Eventador.Common.Repositories;
-using Eventador.Common.Services;
-using Eventador.Data.Contract;
-using Eventador.Domain;
-using Eventador.Services.Contract;
+﻿using Eventador.API.Common.Services;
+using Eventador.API.Data.Contract;
+using Eventador.API.Domain;
+using Eventador.API.Services.Contract;
+using Eventador.API.Common.Repositories;
 
-namespace Eventador.Services
+namespace Eventador.API.Services
 {
     public class EventService : BaseService<Event>, IEventService
     {

@@ -1,6 +1,6 @@
-﻿using Eventador.Domain;
+﻿using Eventador.API.Domain;
 
-namespace Eventador.Models
+namespace Eventador.API.Models
 {
     /// <summary>
     /// Упрощенная модель события
@@ -13,7 +13,7 @@ namespace Eventador.Models
         public string Title { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="evnt"></param>
         /// <returns></returns>

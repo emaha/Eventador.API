@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Eventador", "Eventador\Eventador.csproj", "{90250D8F-3791-40E9-AFC2-679D01A6E3C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Eventador.API", "Eventador\Eventador.API.csproj", "{90250D8F-3791-40E9-AFC2-679D01A6E3C6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Eventador.Domain", "Eventador.Domain\Eventador.Domain.csproj", "{F255477D-8B47-4EBA-B3B2-0B5FCFD7FD89}"
 EndProject
@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Eventador.Services.Contract
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Eventador.Data.Migrations", "Eventador.Data.Migrations\Eventador.Data.Migrations.csproj", "{1EB0896B-1E28-4990-9F68-EED4C2499A3D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eventador.Common", "Eventador.Common\Eventador.Common.csproj", "{87E9A5EF-787F-4CAE-8F06-17334E0B6A77}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Eventador.Common", "Eventador.Common\Eventador.Common.csproj", "{87E9A5EF-787F-4CAE-8F06-17334E0B6A77}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

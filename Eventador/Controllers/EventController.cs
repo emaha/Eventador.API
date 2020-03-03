@@ -1,12 +1,12 @@
-﻿using Eventador.Domain;
-using Eventador.Domain.Requests;
-using Eventador.Models;
-using Eventador.Services.Contract;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Threading.Tasks;
+using Eventador.API.Domain;
+using Eventador.API.Domain.Requests;
+using Eventador.API.Models;
+using Eventador.API.Services.Contract;
 
-namespace Eventador.Controllers
+namespace Eventador.API.Controllers
 {
     /// <summary>
     /// Контроллер событий

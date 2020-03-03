@@ -1,4 +1,4 @@
-﻿namespace Eventador.Domain.Types
+﻿namespace Eventador.API.Domain.Types
 {
     /// <summary>
     /// Тип пользователя

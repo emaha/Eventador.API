@@ -1,6 +1,6 @@
-﻿using Eventador.Domain;
+﻿using Eventador.API.Domain;
 
-namespace Eventador.Models
+namespace Eventador.API.Models
 {
     /// <summary>
     /// Упрощенная модель события

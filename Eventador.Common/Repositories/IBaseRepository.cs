@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace Eventador.Common.Repositories
+namespace Eventador.API.Common.Repositories
 {
     /// <summary>
     /// Интерфейс базового репозитория для сущности типа {TEntity}

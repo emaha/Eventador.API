@@ -1,8 +1,8 @@
-﻿using Eventador.Common.Repositories;
-using Eventador.Data.Contract;
-using Eventador.Domain;
+﻿using Eventador.API.Common.Repositories;
+using Eventador.API.Data.Contract;
+using Eventador.API.Domain;
 
-namespace Eventador.Data.Repositories
+namespace Eventador.API.Data.Repositories
 {
     public class EventRepository : BaseRepository<Event>, IEventRepository
     {

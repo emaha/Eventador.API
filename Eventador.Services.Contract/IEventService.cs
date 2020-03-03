@@ -1,7 +1,7 @@
-﻿using Eventador.Common.Services;
-using Eventador.Domain;
+﻿using Eventador.API.Common.Services;
+using Eventador.API.Domain;
 
-namespace Eventador.Services.Contract
+namespace Eventador.API.Services.Contract
 {
     public interface IEventService : IBaseService<Event>
     {

@@ -1,8 +1,8 @@
-﻿using Eventador.Domain.Requests;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
+using Eventador.API.Domain.Requests;
 
-namespace Eventador.Domain
+namespace Eventador.API.Domain
 {
     /// <summary>
     /// Оценки
@@ -11,25 +11,25 @@ namespace Eventador.Domain
     public class Rate
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Column("id")]
         public int Id { get; set; }
-        
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Column("mark")]
         public int Mark { get; set; }
-        
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Column("comment")]
         public string Comment { get; set; }
-        
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Column("create_date")]
         public DateTime CreateDate { get; set; }

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using Eventador.Common.Repositories;
+using Eventador.API.Common.Repositories;
 
-namespace Eventador.Common.Services
+namespace Eventador.API.Common.Services
 {
     /// <summary>
     /// Базовый сервис для сущности типа {TEntity}

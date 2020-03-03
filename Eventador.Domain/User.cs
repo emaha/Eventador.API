@@ -1,7 +1,7 @@
-﻿using Eventador.Domain.Types;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using Eventador.API.Domain.Types;
 
-namespace Eventador.Domain
+namespace Eventador.API.Domain
 {
     /// <summary>
     /// Пользователь (карточка пользователя)

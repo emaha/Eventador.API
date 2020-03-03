@@ -1,8 +1,8 @@
-﻿using Eventador.Services.Contract.Api;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using Eventador.API.Services.Contract.Api;
 
-namespace Eventador.Controllers
+namespace Eventador.API.Controllers
 {
     /// <summary>
     ///

@@ -1,7 +1,7 @@
 ﻿using JetBrains.Annotations;
 using System.Threading.Tasks;
 
-namespace Eventador.Common.Services
+namespace Eventador.API.Common.Services
 {
     /// <summary>
     /// Интерфейс базового сервиса для сущности типа {TEntity}

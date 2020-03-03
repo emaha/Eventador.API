@@ -1,7 +1,7 @@
-﻿using Eventador.Domain;
+﻿using Eventador.API.Domain;
 using Microsoft.EntityFrameworkCore;
 
-namespace Eventador.Data
+namespace Eventador.API.Data
 {
     public class EventadorDbContext : DbContext
     {

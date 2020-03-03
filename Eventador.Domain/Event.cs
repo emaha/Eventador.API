@@ -1,9 +1,9 @@
-﻿using Eventador.Domain.Types;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
-using Eventador.Domain.Requests;
+using Eventador.API.Domain.Requests;
+using Eventador.API.Domain.Types;
 
-namespace Eventador.Domain
+namespace Eventador.API.Domain
 {
     /// <summary>
     /// Событие

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Eventador.Services.Options
+namespace Eventador.API.Services.Options
 {
     public class ServiceOption
     {

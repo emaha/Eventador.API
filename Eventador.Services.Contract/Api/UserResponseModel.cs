@@ -1,4 +1,4 @@
-﻿namespace Eventador.Services.Contract.Api
+﻿namespace Eventador.API.Services.Contract.Api
 {
     public class UserResponseModel
     {

@@ -8,7 +8,7 @@ using JetBrains.Annotations;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Primitives;
 
-namespace Eventador.Middlewares
+namespace Eventador.API.Middlewares
 {
     /// <summary>
     /// Middleware для аутентификации через токен

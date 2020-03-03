@@ -1,7 +1,7 @@
 ﻿using System;
-using Eventador.Domain.Types;
+using Eventador.API.Domain.Types;
 
-namespace Eventador.Domain.Requests
+namespace Eventador.API.Domain.Requests
 {
     /// <summary>
     /// Запрос на обновление события

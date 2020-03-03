@@ -1,11 +1,4 @@
-﻿using Eventador.Common.Middlewares;
-using Eventador.Data;
-using Eventador.Data.Contract;
-using Eventador.Data.Repositories;
-using Eventador.Services;
-using Eventador.Services.Contract;
-using Eventador.Services.Contract.Api;
-using Eventador.Services.Options;
+﻿using Eventador.API.Common.Middlewares;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
@@ -23,9 +16,16 @@ using System;
 using System.Globalization;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using Eventador.Middlewares;
+using Eventador.API.Data;
+using Eventador.API.Data.Contract;
+using Eventador.API.Data.Repositories;
+using Eventador.API.Services;
+using Eventador.API.Services.Contract;
+using Eventador.API.Services.Contract.Api;
+using Eventador.API.Services.Options;
+using Eventador.API.Middlewares;
 
-namespace Eventador
+namespace Eventador.API
 {
     /// <summary>
     ///

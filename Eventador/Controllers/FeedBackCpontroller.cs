@@ -1,9 +1,9 @@
-﻿using Eventador.Domain;
-using Eventador.Domain.Requests;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using Eventador.API.Domain;
+using Eventador.API.Domain.Requests;
 
-namespace Eventador.Controllers
+namespace Eventador.API.Controllers
 {
     /// <summary>
     ///

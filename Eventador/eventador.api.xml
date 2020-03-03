@@ -1,200 +1,215 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>Eventador</name>
+        <name>Eventador.API</name>
     </assembly>
     <members>
-        <member name="T:Eventador.Controllers.EventController">
+        <member name="T:Eventador.API.Controllers.EventController">
             <summary>
             Контроллер событий
             </summary>
         </member>
-        <member name="M:Eventador.Controllers.EventController.#ctor(Eventador.Services.Contract.IEventService)">
+        <member name="M:Eventador.API.Controllers.EventController.#ctor(Eventador.API.Services.Contract.IEventService)">
             <summary>
             ctor
             </summary>
             <param name="eventService"></param>
         </member>
-        <member name="M:Eventador.Controllers.EventController.GetById(System.Int32)">
+        <member name="M:Eventador.API.Controllers.EventController.GetById(System.Int32)">
             <summary>
             Получить по id
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:Eventador.Controllers.EventController.GetEvents">
+        <member name="M:Eventador.API.Controllers.EventController.GetEvents">
             <summary>
             Получить события в регионе
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Eventador.Controllers.EventController.CreateEvent(Eventador.Domain.Requests.EventCreateRequest)">
+        <member name="M:Eventador.API.Controllers.EventController.CreateEvent(Eventador.API.Domain.Requests.EventCreateRequest)">
             <summary>
             Создание события
             </summary>
             <param name="request"></param>
             <returns></returns>
         </member>
-        <member name="M:Eventador.Controllers.EventController.UpdateEvent(Eventador.Domain.Requests.EventUpdateRequest)">
+        <member name="M:Eventador.API.Controllers.EventController.UpdateEvent(Eventador.API.Domain.Requests.EventUpdateRequest)">
             <summary>
             Изменение события
             </summary>
             <param name="request"></param>
             <returns></returns>
         </member>
-        <member name="M:Eventador.Controllers.EventController.FinishEvent(System.Int32)">
+        <member name="M:Eventador.API.Controllers.EventController.FinishEvent(System.Int32)">
             <summary>
             Завершение события
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="T:Eventador.Controllers.FeedBackCpontroller">
+        <member name="T:Eventador.API.Controllers.FeedBackCpontroller">
              <summary>
             
              </summary>
         </member>
-        <member name="M:Eventador.Controllers.FeedBackCpontroller.RateEvent(Eventador.Domain.Requests.RateEventCreateRequest)">
+        <member name="M:Eventador.API.Controllers.FeedBackCpontroller.RateEvent(Eventador.API.Domain.Requests.RateEventCreateRequest)">
             <summary>
             Оценить событие
             </summary>
             <param name="request"></param>
             <returns></returns>
         </member>
-        <member name="T:Eventador.Controllers.UserController">
+        <member name="T:Eventador.API.Controllers.UserController">
              <summary>
             
              </summary>
         </member>
-        <member name="M:Eventador.Controllers.UserController.Get">
-             <summary>
-            
-             </summary>
-             <returns></returns>
-        </member>
-        <member name="M:Eventador.Controllers.UserController.Create">
+        <member name="M:Eventador.API.Controllers.UserController.Get">
              <summary>
             
              </summary>
              <returns></returns>
         </member>
-        <member name="M:Eventador.Controllers.UserController.Update">
+        <member name="M:Eventador.API.Controllers.UserController.Create">
              <summary>
             
              </summary>
              <returns></returns>
         </member>
-        <member name="M:Eventador.Controllers.UserController.Block">
+        <member name="M:Eventador.API.Controllers.UserController.Update">
              <summary>
             
              </summary>
              <returns></returns>
         </member>
-        <member name="M:Eventador.Controllers.UserController.Unblock">
+        <member name="M:Eventador.API.Controllers.UserController.Block">
              <summary>
             
              </summary>
              <returns></returns>
         </member>
-        <member name="T:Eventador.Models.EventModel">
+        <member name="M:Eventador.API.Controllers.UserController.Unblock">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="T:Eventador.API.Middlewares.TokenAuthenticationMiddleware">
+            <summary>
+            Middleware для аутентификации через токен
+            </summary>
+        </member>
+        <member name="M:Eventador.API.Middlewares.TokenAuthenticationMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate)">
+            <summary>
+            ctor
+            </summary>
+        </member>
+        <member name="M:Eventador.API.Middlewares.TokenAuthenticationMiddleware.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            InvokeAsync
+            </summary>
+        </member>
+        <member name="T:Eventador.API.Models.EventModel">
             <summary>
             Упрощенная модель события
             </summary>
         </member>
-        <member name="P:Eventador.Models.EventModel.Title">
+        <member name="P:Eventador.API.Models.EventModel.Title">
             <summary>
             Заголовок
             </summary>
         </member>
-        <member name="M:Eventador.Models.EventModel.Create(Eventador.Domain.Event)">
-            <summary>
-            
-            </summary>
-            <param name="evnt"></param>
-            <returns></returns>
-        </member>
-        <member name="T:Eventador.Models.SmallEventModel">
-            <summary>
-            Упрощенная модель события
-            </summary>
-        </member>
-        <member name="P:Eventador.Models.SmallEventModel.Id">
-             <summary>
-            
-             </summary>
-        </member>
-        <member name="P:Eventador.Models.SmallEventModel.Title">
-            <summary>
-            Заголовок
-            </summary>
-        </member>
-        <member name="M:Eventador.Models.SmallEventModel.Create(Eventador.Domain.Event)">
+        <member name="M:Eventador.API.Models.EventModel.Create(Eventador.API.Domain.Event)">
              <summary>
             
              </summary>
              <param name="evnt"></param>
              <returns></returns>
         </member>
-        <member name="T:Eventador.Program">
+        <member name="T:Eventador.API.Models.SmallEventModel">
+            <summary>
+            Упрощенная модель события
+            </summary>
+        </member>
+        <member name="P:Eventador.API.Models.SmallEventModel.Id">
              <summary>
             
              </summary>
         </member>
-        <member name="M:Eventador.Program.Main(System.String[])">
+        <member name="P:Eventador.API.Models.SmallEventModel.Title">
+            <summary>
+            Заголовок
+            </summary>
+        </member>
+        <member name="M:Eventador.API.Models.SmallEventModel.Create(Eventador.API.Domain.Event)">
+             <summary>
+            
+             </summary>
+             <param name="evnt"></param>
+             <returns></returns>
+        </member>
+        <member name="T:Eventador.API.Program">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Eventador.API.Program.Main(System.String[])">
              <summary>
             
              </summary>
              <param name="args"></param>
         </member>
-        <member name="M:Eventador.Program.BuildWebHost(System.String[])">
+        <member name="M:Eventador.API.Program.BuildWebHost(System.String[])">
              <summary>
             
              </summary>
              <param name="args"></param>
              <returns></returns>
         </member>
-        <member name="T:Eventador.Startup">
+        <member name="T:Eventador.API.Startup">
              <summary>
             
              </summary>
         </member>
-        <member name="M:Eventador.Startup.#ctor(Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+        <member name="M:Eventador.API.Startup.#ctor(Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
              <summary>
             
              </summary>
              <param name="env"></param>
         </member>
-        <member name="P:Eventador.Startup.Environment">
+        <member name="P:Eventador.API.Startup.Environment">
             <summary>
             Environment
             </summary>
         </member>
-        <member name="P:Eventador.Startup.Configuration">
+        <member name="P:Eventador.API.Startup.Configuration">
             <summary>
             Конфигурация приложения
             </summary>
         </member>
-        <member name="M:Eventador.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+        <member name="M:Eventador.API.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
              <summary>
             
              </summary>
              <param name="services"></param>
         </member>
-        <member name="M:Eventador.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+        <member name="M:Eventador.API.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
              <summary>
             
              </summary>
              <param name="app"></param>
              <param name="env"></param>
         </member>
-        <member name="M:Eventador.Startup.GetRetryPolicy">
+        <member name="M:Eventador.API.Startup.GetRetryPolicy">
             <summary>
             Базовая политика повторов с колебанием задержки
             <remarks>Политики, заданные с помощью этого метода расширения, обрабатывают HttpRequestException,
             ответы HTTP 5xx и ответы HTTP 408</remarks>
             </summary>
         </member>
-        <member name="M:Eventador.Startup.RegisterHealthChecks(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+        <member name="M:Eventador.API.Startup.RegisterHealthChecks(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
             <summary>
             Регистрация сервиса мониторинга работоспособности
             </summary>

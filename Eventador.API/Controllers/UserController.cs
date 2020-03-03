@@ -5,29 +5,25 @@ using Eventador.Services.Contract.Api;
 namespace Eventador.API.Controllers
 {
     /// <summary>
-    ///
+    /// Контроллер пользователей
     /// </summary>
     [ApiController]
     [Route("[controller]")]
     public class UserController : ControllerBase
     {
         /// <summary>
-        ///
+        /// Получить пользователя
         /// </summary>
+        /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet]
-        public async Task<UserResponseModel> Get()
+        [HttpGet("{id}")]
+        public async Task<UserResponseModel> Get(int id)
         {
-            var model = new UserResponseModel()
-            {
-                Name = "ASDASDASDD"
-            };
-
-            return model;
+            return null;
         }
 
         /// <summary>
-        ///
+        /// Создать пользователя
         /// </summary>
         /// <returns></returns>
         [HttpPost]
@@ -37,7 +33,7 @@ namespace Eventador.API.Controllers
         }
 
         /// <summary>
-        ///
+        /// Обновить данные пользователя
         /// </summary>
         /// <returns></returns>
         [HttpPut]
@@ -47,7 +43,7 @@ namespace Eventador.API.Controllers
         }
 
         /// <summary>
-        ///
+        /// Заблокировать пользователя
         /// </summary>
         /// <returns></returns>
         [HttpPost("Block")]
@@ -57,11 +53,33 @@ namespace Eventador.API.Controllers
         }
 
         /// <summary>
-        ///
+        /// Разблокировать пользователя
         /// </summary>
         /// <returns></returns>
         [HttpPost("Unblock")]
         public async Task<IActionResult> Unblock()
+        {
+            return Ok();
+        }
+
+        /// <summary>
+        /// Подписаться
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpPost("Subscriber/{id}")]
+        public async Task<IActionResult> Subscribe(int id)
+        {
+            return Ok();
+        }
+
+        /// <summary>
+        /// Отписаться
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpPost("Unsubscribe/{id}")]
+        public async Task<IActionResult> Unsubscribe(int id)
         {
             return Ok();
         }

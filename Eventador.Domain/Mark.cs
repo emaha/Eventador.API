@@ -7,8 +7,8 @@ namespace Eventador.Domain
     /// <summary>
     /// Оценки
     /// </summary>
-    [Table("rates")]
-    public class Rate
+    [Table("marks")]
+    public class Mark
     {
         /// <summary>
         ///
@@ -19,8 +19,8 @@ namespace Eventador.Domain
         /// <summary>
         ///
         /// </summary>
-        [Column("mark")]
-        public int Mark { get; set; }
+        [Column("value")]
+        public int Value { get; set; }
 
         /// <summary>
         ///
@@ -34,12 +34,12 @@ namespace Eventador.Domain
         [Column("create_date")]
         public DateTime CreateDate { get; set; }
 
-        public static Rate CreateFromRequest(RateEventCreateRequest request)
+        public static Mark CreateFromRequest(RateEventCreateRequest request)
         {
-            return new Rate
+            return new Mark
             {
                 Comment = request.Comment,
-                Mark = request.Mark
+                Value = request.Mark
             };
         }
     }

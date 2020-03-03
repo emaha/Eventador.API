@@ -44,13 +44,25 @@ namespace Eventador.API.Controllers
         /// Получить события в регионе
         /// </summary>
         /// <returns></returns>
-        [HttpGet("All")]
-        public async Task<SmallEventModel[]> GetEvents()
+        [HttpGet("Region/{id}")]
+        public async Task<SmallEventModel[]> GetEventsByRegion(int id)
         {
             //TODO: получить текущий регион для местоположения
             int regionId = 1;
 
             var events = await _eventService.GetByRegion(regionId);
+
+            return events.Select(SmallEventModel.Create).ToArray();
+        }
+
+        /// <summary>
+        /// Получить события определённого пользователя
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("Author/{id}")]
+        public async Task<SmallEventModel[]> GetEventsByAuthor(int id)
+        {
+            var events = await _eventService.GetByAuthorId(id);
 
             return events.Select(SmallEventModel.Create).ToArray();
         }
@@ -97,6 +109,32 @@ namespace Eventador.API.Controllers
         {
             var evnt = await _eventService.GetById(id);
             evnt.Finish();
+
+            return Ok();
+        }
+
+        /// <summary>
+        /// Зарегистрироваться на событие
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpPost("CheckIn/{id}")]
+        public async Task<IActionResult> CheckIn(int id)
+        {
+            // TODO:
+
+            return Ok();
+        }
+
+        /// <summary>
+        /// Отписаться от события
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpPost("CheckOut/{id}")]
+        public async Task<IActionResult> CheckOut(int id)
+        {
+            // TODO:
 
             return Ok();
         }

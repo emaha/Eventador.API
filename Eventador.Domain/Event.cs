@@ -60,8 +60,15 @@ namespace Eventador.Domain
         public DateTime EndDate { get; set; }
 
         /// <summary>
+        /// Стоимость входа/билета/участия/депозит
+        /// </summary>
+        [Column("price")]
+        public decimal Price { get; set; }
+
+        /// <summary>
         /// Регион
         /// </summary>
+        [Column("region_id")]
         public int RegionId { get; set; }
 
         /// <summary>
@@ -109,6 +116,8 @@ namespace Eventador.Domain
                 AccessType = request.AccessType,
                 StartDate = request.StartDate,
                 EndDate = request.EndDate,
+                RegionId = request.RegionId,
+                Price = request.Price,
                 Lat = request.Lat,
                 Lon = request.Lon,
                 EventType = request.EventType,

@@ -203,11 +203,15 @@ namespace Eventador.API
         private void RegisterRepositories(IServiceCollection services)
         {
             services.AddScoped<IEventRepository, EventRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IMarkRepository, MarkRepository>();
         }
 
         private void RegisterServices(IServiceCollection services)
         {
             services.AddScoped<IEventService, EventService>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IMarkService, MarkService>();
         }
 
         /// <summary>

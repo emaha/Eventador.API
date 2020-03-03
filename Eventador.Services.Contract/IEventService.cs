@@ -4,8 +4,23 @@ using Eventador.Domain;
 
 namespace Eventador.Services.Contract
 {
+    /// <summary>
+    ///
+    /// </summary>
     public interface IEventService : IBaseService<Event>
     {
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="regionId"></param>
+        /// <returns></returns>
         Task<Event[]> GetByRegion(int regionId);
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        Task<Event[]> GetByAuthorId(int id);
     }
 }

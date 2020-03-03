@@ -16,6 +16,7 @@ namespace Eventador.Domain.Requests
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public int RegionId { get; set; }
+        public decimal Price { get; set; }
         public float? Lat { get; set; }
         public float? Lon { get; set; }
     }

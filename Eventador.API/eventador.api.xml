@@ -29,10 +29,10 @@
             <returns></returns>
         </member>
         <member name="M:Eventador.API.Controllers.EventController.GetEventsByAuthor(System.Int32)">
-             <summary>
-            
-             </summary>
-             <returns></returns>
+            <summary>
+            Получить события определённого пользователя
+            </summary>
+            <returns></returns>
         </member>
         <member name="M:Eventador.API.Controllers.EventController.CreateEvent(Eventador.Domain.Requests.EventCreateRequest)">
             <summary>
@@ -48,6 +48,13 @@
             <param name="request"></param>
             <returns></returns>
         </member>
+        <member name="M:Eventador.API.Controllers.EventController.DeleteEvent(System.Int32)">
+            <summary>
+            Удаление события
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="M:Eventador.API.Controllers.EventController.FinishEvent(System.Int32)">
             <summary>
             Завершение события
@@ -56,23 +63,23 @@
             <returns></returns>
         </member>
         <member name="M:Eventador.API.Controllers.EventController.CheckIn(System.Int32)">
-             <summary>
-            
-             </summary>
-             <param name="id"></param>
-             <returns></returns>
+            <summary>
+            Зарегистрироваться на событие
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
         </member>
         <member name="M:Eventador.API.Controllers.EventController.CheckOut(System.Int32)">
-             <summary>
-            
-             </summary>
-             <param name="id"></param>
-             <returns></returns>
+            <summary>
+            Отписаться от события
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
         </member>
         <member name="T:Eventador.API.Controllers.FeedBackController">
-             <summary>
-            
-             </summary>
+            <summary>
+            Контроллер обратной связи
+            </summary>
         </member>
         <member name="M:Eventador.API.Controllers.FeedBackController.RateEvent(Eventador.Domain.Requests.RateEventCreateRequest)">
             <summary>
@@ -81,62 +88,67 @@
             <param name="request"></param>
             <returns></returns>
         </member>
-        <member name="M:Eventador.API.Controllers.FeedBackController.ComplainEvent(System.Int32,System.Int32,System.String)">
+        <member name="M:Eventador.API.Controllers.FeedBackController.GetPersonRating(System.Int32)">
+            <summary>
+            Получить рейтинг пользователя
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Eventador.API.Controllers.FeedBackController.ComplainEvent(Eventador.Domain.Requests.ComplaintCreateRequest)">
             <summary>
             Пожаловаться на событие
             </summary>
-            <param name="id"></param>
-            <param name="reasonId"></param>
-            <param name="reasonText"></param>
+            <param name="request"></param>
             <returns></returns>
         </member>
-        <member name="M:Eventador.API.Controllers.FeedBackController.ComplainPerson(System.Int32,System.Int32,System.String)">
+        <member name="M:Eventador.API.Controllers.FeedBackController.ComplainPerson(Eventador.Domain.Requests.ComplaintCreateRequest)">
             <summary>
             Пожаловаться на пользователя
             </summary>
-            <param name="reasonId"></param>
-            <param name="reasonText"></param>
+            <param name="request"></param>
             <returns></returns>
         </member>
         <member name="T:Eventador.API.Controllers.ManagementController">
-             <summary>
-            
-             </summary>
+            <summary>
+            Контроллер управления
+            </summary>
         </member>
         <member name="T:Eventador.API.Controllers.UserController">
-             <summary>
-            
-             </summary>
+            <summary>
+            Контроллер пользователей
+            </summary>
         </member>
-        <member name="M:Eventador.API.Controllers.UserController.Get">
-             <summary>
-            
-             </summary>
-             <returns></returns>
+        <member name="M:Eventador.API.Controllers.UserController.Get(System.Int32)">
+            <summary>
+            Получить пользователя
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
         </member>
         <member name="M:Eventador.API.Controllers.UserController.Create">
-             <summary>
-            
-             </summary>
-             <returns></returns>
+            <summary>
+            Создать пользователя
+            </summary>
+            <returns></returns>
         </member>
         <member name="M:Eventador.API.Controllers.UserController.Update">
-             <summary>
-            
-             </summary>
-             <returns></returns>
+            <summary>
+            Обновить данные пользователя
+            </summary>
+            <returns></returns>
         </member>
         <member name="M:Eventador.API.Controllers.UserController.Block">
-             <summary>
-            
-             </summary>
-             <returns></returns>
+            <summary>
+            Заблокировать пользователя
+            </summary>
+            <returns></returns>
         </member>
         <member name="M:Eventador.API.Controllers.UserController.Unblock">
-             <summary>
-            
-             </summary>
-             <returns></returns>
+            <summary>
+            Разблокировать пользователя
+            </summary>
+            <returns></returns>
         </member>
         <member name="M:Eventador.API.Controllers.UserController.Subscribe(System.Int32)">
             <summary>

@@ -100,6 +100,19 @@ namespace Eventador.API.Controllers
         }
 
         /// <summary>
+        /// Удаление события
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpDelete]
+        public async Task<IActionResult> DeleteEvent(int id)
+        {
+            // TODO: Delete
+
+            return Ok();
+        }
+
+        /// <summary>
         /// Завершение события
         /// </summary>
         /// <param name="id"></param>

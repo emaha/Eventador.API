@@ -104,11 +104,10 @@ namespace Eventador.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteEvent(int id)
         {
-            // TODO: Delete
-
+            await _eventService.Delete(id);
             return Ok();
         }
 
@@ -117,37 +116,11 @@ namespace Eventador.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpPost("Finish")]
+        [HttpPost("{id}/Finish")]
         public async Task<IActionResult> FinishEvent(int id)
         {
             var evnt = await _eventService.GetById(id);
             evnt.Finish();
-
-            return Ok();
-        }
-
-        /// <summary>
-        /// Зарегистрироваться на событие
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        [HttpPost("CheckIn/{id}")]
-        public async Task<IActionResult> CheckIn(int id)
-        {
-            // TODO:
-
-            return Ok();
-        }
-
-        /// <summary>
-        /// Отписаться от события
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        [HttpPost("CheckOut/{id}")]
-        public async Task<IActionResult> CheckOut(int id)
-        {
-            // TODO:
 
             return Ok();
         }

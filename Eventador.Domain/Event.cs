@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using Eventador.Domain.Requests;
+using Eventador.Domain.Statuses;
 using Eventador.Domain.Types;
 
 namespace Eventador.Domain
@@ -34,6 +35,18 @@ namespace Eventador.Domain
         /// </summary>
         [Column("additional_info")]
         public string AdditionalInfo { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [Column("title_image_url")]
+        public string TitleImageUrl { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [Column("image_urls")]
+        public string[] ImageUrls { get; set; }
 
         /// <summary>
         /// Id категорий к которым  относится событие

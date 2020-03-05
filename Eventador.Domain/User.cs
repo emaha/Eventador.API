@@ -34,6 +34,24 @@ namespace Eventador.Domain
         public string MiddleName { get; set; }
 
         /// <summary>
+        /// Логин
+        /// </summary>
+        [Column("login")]
+        public string Login { get; set; }
+
+        /// <summary>
+        /// Пароль
+        /// </summary>
+        [Column("password")]
+        public string Password { get; set; }
+
+        /// <summary>
+        /// Флаг блокировки
+        /// </summary>
+        [Column("blocked")]
+        public bool Blocked { get; set; }
+
+        /// <summary>
         /// Тип пользователя
         /// </summary>
         [Column("user_type")]
@@ -52,9 +70,24 @@ namespace Eventador.Domain
         public string Phone { get; set; }
 
         /// <summary>
-        /// Дополнителная информация
+        /// Дополнительная информация
         /// </summary>
         [Column("about_info")]
         public string AboutInfo { get; set; }
+
+        /// <summary>
+        /// ФИО
+        /// </summary>
+        public string FullName => $"{LastName} {Firstname} {MiddleName}";
+
+        /// <summary>
+        /// Сверка пароля
+        /// </summary>
+        /// <param name="hashPassword"></param>
+        /// <returns></returns>
+        public bool VerifyPassword(string hashPassword)
+        {
+            return Password == hashPassword;
+        }
     }
 }

@@ -19,10 +19,17 @@ using System;
 using System.Globalization;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using Eventador.API.Authorization;
+using Eventador.API.Middlewares;
+using Eventador.API.Services;
 using Eventador.Common.Middlewares;
 using Eventador.Data;
 using Eventador.Data.Contract;
 using Eventador.Data.Repositories;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http.Features;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Eventador.API
 {
@@ -76,9 +83,15 @@ namespace Eventador.API
             services.AddDbContext<EventadorDbContext>(options => options.UseNpgsql(connectionString
                     , x => x.MigrationsAssembly("Eventador.Data.Migrations")));
 
+            services.AddResponseCompression(options => { options.EnableForHttps = true; });
+
             RegisterOptions(services);
 
             RegisterHealthChecks(services);
+
+            RegisterAuthentication(services);
+
+            RegisterAuthorization(services);
 
             RegisterServices(services);
             RegisterRepositories(services);
@@ -86,6 +99,13 @@ namespace Eventador.API
             RegisterRemoteServices(services);
 
             RegisterApi(services);
+
+            // Для загрузки больших файлов на сервер
+            services.Configure<FormOptions>(x =>
+            {
+                x.ValueLengthLimit = 10 * 1024 * 1024;
+                x.MultipartBodyLengthLimit = 10 * 1024 * 1024;
+            });
 
             services.AddSwaggerGen(c =>
             {
@@ -157,12 +177,17 @@ namespace Eventador.API
                 ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
             });
 
-            //app.UseHttpsRedirection();
+            app.UseResponseCompression();
+            app.UseRequestLocalization();
+
             app.UseRouting();
+            app.UseAuthentication();
             app.UseAuthorization();
             app.UseIpEnrichLog();
 
             //app.UseMiddleware<TokenAuthenticationMiddleware>();
+
+            app.UseVersion("/version");
 
             var supportedCultures = new[] { new CultureInfo("ru-RU") };
             app.UseRequestLocalization(new RequestLocalizationOptions
@@ -198,6 +223,7 @@ namespace Eventador.API
         private void RegisterOptions(IServiceCollection services)
         {
             services.Configure<ServiceOption>(Configuration.GetSection("ServiceOption"));
+            services.Configure<TokenOptions>(Configuration.GetSection("TokenOptions"));
         }
 
         private void RegisterRepositories(IServiceCollection services)
@@ -233,6 +259,82 @@ namespace Eventador.API
         private void RegisterRemoteServices(IServiceCollection services)
         {
             //services.AddScoped<IRemoteService, RemoteService>();
+        }
+
+        /// <summary>
+        /// Регистрация аутентификации
+        /// </summary>
+        /// <param name="services"></param>
+        private void RegisterAuthentication(IServiceCollection services)
+        {
+            RegisterTokenService(services);
+
+            var tokenOptions = new TokenOptions();
+            Configuration.GetSection("TokenOptions").Bind(tokenOptions);
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(op =>
+                {
+                    if (!Environment.IsProduction())
+                    {
+                        op.RequireHttpsMetadata = false;
+                    }
+
+                    op.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        // Валидация издателя
+                        ValidateIssuer = true,
+                        // строка, представляющая издателя
+                        ValidIssuer = tokenOptions.Issuer,
+
+                        // Валидация потребителя токена
+                        ValidateAudience = true,
+                        // установка потребителя токена
+                        ValidAudience = tokenOptions.Audience,
+
+                        // Валидация время жизни токена
+                        ValidateLifetime = true,
+
+                        // Установка ключа безопасности
+                        IssuerSigningKey = tokenOptions.GetSymmetricSecurityKeyForAccess(),
+                        // Валидация ключа безопасности
+                        ValidateIssuerSigningKey = true
+                    };
+                });
+        }
+
+        /// <summary>
+        /// Регистрация сервисов для работы с токеном
+        /// </summary>
+        private static void RegisterTokenService(IServiceCollection services)
+        {
+            services.AddScoped<ITokenWithRefreshService, TokenWithRefreshService>();
+            services.AddScoped<IRefreshTokenService, CacheRefreshTokenService>();
+        }
+
+        /// <summary>
+        /// Регистрация авторизации
+        /// </summary>
+        private static void RegisterAuthorization(IServiceCollection services)
+        {
+            services.AddHttpContextAccessor();
+
+            RegisterAuthorizationHandler(services);
+
+            services.AddAuthorization(options =>
+            {
+                // Политика для проверки, что пользователь заблокирован, пока у него активная аутентификация (активный токен)
+                options.AddPolicy(AuthorizationPolicyName.Blocked, policy =>
+                    policy.Requirements.Add(new BlockedRequirement()));
+            });
+        }
+
+        /// <summary>
+        /// Регистрация обработчиков авторизации
+        /// </summary>
+        private static void RegisterAuthorizationHandler(IServiceCollection services)
+        {
+            services.AddScoped<IAuthorizationHandler, BlockedHandler>();
         }
 
         /// <summary>

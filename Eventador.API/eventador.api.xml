@@ -4,6 +4,106 @@
         <name>Eventador.API</name>
     </assembly>
     <members>
+        <member name="T:Eventador.API.Authorization.AuthorizationPolicyName">
+            <summary>
+            Название авторизационных политик
+            </summary>
+        </member>
+        <member name="F:Eventador.API.Authorization.AuthorizationPolicyName.Blocked">
+            <summary>
+            Политика заблокированного пользователя
+            </summary>
+        </member>
+        <member name="T:Eventador.API.Authorization.BlockedHandler">
+            <summary>
+            Авторизационный обработчик для проверки заблокированного пользователя
+            </summary>
+        </member>
+        <member name="M:Eventador.API.Authorization.BlockedHandler.#ctor(Microsoft.AspNetCore.Http.IHttpContextAccessor,Eventador.Services.Contract.IUserService)">
+            <summary>
+            ctor
+            </summary>
+        </member>
+        <member name="M:Eventador.API.Authorization.BlockedHandler.HandleRequirementAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext,Eventador.API.Authorization.BlockedRequirement)">
+            <inheritdoc />
+        </member>
+        <member name="T:Eventador.API.Authorization.BlockedRequirement">
+            <summary>
+            Требование для проверки заблокированного пользователя
+            </summary>
+        </member>
+        <member name="T:Eventador.API.Controllers.AuthController">
+            <summary>
+            Контроллер авторизации
+            </summary>
+        </member>
+        <member name="M:Eventador.API.Controllers.AuthController.#ctor(Eventador.API.Services.ITokenWithRefreshService,Microsoft.Extensions.Logging.ILogger{Eventador.API.Controllers.AuthController},Eventador.Services.Contract.IUserService)">
+            <summary>
+            ctor
+            </summary>
+        </member>
+        <member name="M:Eventador.API.Controllers.AuthController.SignIn(Eventador.API.Requests.CredentialsRequest)">
+            <summary>
+            Вход
+            </summary>
+            <param name="request"></param>
+            <returns>Токен</returns>
+        </member>
+        <member name="M:Eventador.API.Controllers.AuthController.SignOut">
+            <summary>
+            Выход со всех устройств
+            </summary>
+        </member>
+        <member name="M:Eventador.API.Controllers.AuthController.RefreshToken(Eventador.API.Requests.RefreshTokenRequest)">
+            <summary>
+            Обновить токен
+            </summary>
+            <param name="request">Запрос на обновление токена из refresh token</param>
+            <returns></returns>
+        </member>
+        <member name="M:Eventador.API.Controllers.AuthController.RecoverPassword(Eventador.API.Requests.RecoverPasswordRequest)">
+            <summary>
+            Восстановление пароля
+            </summary>
+            <param name="request">Запрос на восстановление пароля</param>
+            <returns></returns>
+        </member>
+        <member name="M:Eventador.API.Controllers.AuthController.GetClaimLogin(System.IdentityModel.Tokens.Jwt.JwtSecurityToken)">
+            <summary>
+            Получить идентификационные данные для логина
+            </summary>
+            <param name="refreshToken">Refresh token</param>
+            <returns></returns>
+        </member>
+        <member name="M:Eventador.API.Controllers.AuthController.GetClaimLogin(System.Collections.Generic.IEnumerable{System.Security.Claims.Claim})">
+            <summary>
+            Получить идентификационные данные для логина
+            </summary>
+            <param name="claims"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Eventador.API.Controllers.AuthController.GetIdentity(System.String)">
+            <summary>
+            Получить идентификационные данные
+            </summary>
+            <param name="login">Логин</param>
+            <returns></returns>
+        </member>
+        <member name="M:Eventador.API.Controllers.AuthController.GetIdentity(System.String,System.String)">
+            <summary>
+            Получить идентификационные данные
+            </summary>
+            <param name="login">Логин</param>
+            <param name="password">Пароль</param>
+            <returns></returns>
+        </member>
+        <member name="M:Eventador.API.Controllers.AuthController.GetClaimsIdentity(Eventador.Domain.User)">
+            <summary>
+            Получить идентификационные данные
+            </summary>
+            <param name="user"></param>
+            <returns></returns>
+        </member>
         <member name="T:Eventador.API.Controllers.EventController">
             <summary>
             Контроллер событий
@@ -62,20 +162,6 @@
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:Eventador.API.Controllers.EventController.CheckIn(System.Int32)">
-            <summary>
-            Зарегистрироваться на событие
-            </summary>
-            <param name="id"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Eventador.API.Controllers.EventController.CheckOut(System.Int32)">
-            <summary>
-            Отписаться от события
-            </summary>
-            <param name="id"></param>
-            <returns></returns>
-        </member>
         <member name="T:Eventador.API.Controllers.FeedBackController">
             <summary>
             Контроллер обратной связи
@@ -86,6 +172,13 @@
             Оценить событие
             </summary>
             <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Eventador.API.Controllers.FeedBackController.GetEventFeedback(System.Int32)">
+            <summary>
+            Получить отзывы о событии
+            </summary>
+            <param name="id"></param>
             <returns></returns>
         </member>
         <member name="M:Eventador.API.Controllers.FeedBackController.GetPersonRating(System.Int32)">
@@ -113,6 +206,39 @@
             <summary>
             Контроллер управления
             </summary>
+        </member>
+        <member name="T:Eventador.API.Controllers.RegistrationController">
+            <summary>
+            Контроллер регистрации
+            </summary>
+        </member>
+        <member name="M:Eventador.API.Controllers.RegistrationController.GetByEventId(System.Int32)">
+            <summary>
+            Получить по id события
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Eventador.API.Controllers.RegistrationController.GetByUserId(System.Int32)">
+            <summary>
+            Получить по id пользователя
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Eventador.API.Controllers.RegistrationController.Register(System.Int32)">
+            <summary>
+            Зарегистрироваться на событие
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Eventador.API.Controllers.RegistrationController.UnRegister(System.Int32)">
+            <summary>
+            Отписаться от события
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
         </member>
         <member name="T:Eventador.API.Controllers.UserController">
             <summary>
@@ -179,6 +305,32 @@
             InvokeAsync
             </summary>
         </member>
+        <member name="T:Eventador.API.Middlewares.VersionMiddleware">
+            <summary>
+            Мидлвар добавляющий endpoint /version c возвратом версии приложения.
+            Версия и имя достаются из конфигурации по переменным "App" и "Version".
+            <remarks>
+            </remarks>
+            </summary>
+        </member>
+        <member name="M:Eventador.API.Middlewares.VersionMiddleware.HandleMapVersion(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+             <summary>
+            
+             </summary>
+             <param name="app"></param>
+        </member>
+        <member name="T:Eventador.API.Middlewares.VersionMiddlewareExtensions">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Eventador.API.Middlewares.VersionMiddlewareExtensions.UseVersion(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Http.PathString)">
+             <summary>
+            
+             </summary>
+             <param name="app"></param>
+             <param name="path"></param>
+        </member>
         <member name="T:Eventador.API.Models.EventModel">
             <summary>
             Упрощенная модель события
@@ -187,6 +339,81 @@
         <member name="P:Eventador.API.Models.EventModel.Title">
             <summary>
             Заголовок
+            </summary>
+        </member>
+        <member name="P:Eventador.API.Models.EventModel.Description">
+            <summary>
+            Описание
+            </summary>
+        </member>
+        <member name="P:Eventador.API.Models.EventModel.AdditionalInfo">
+            <summary>
+            Дополнительная информация
+            </summary>
+        </member>
+        <member name="P:Eventador.API.Models.EventModel.TitleImageUrl">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Eventador.API.Models.EventModel.ImageUrls">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Eventador.API.Models.EventModel.EventType">
+            <summary>
+            Id категорий к которым  относится событие
+            </summary>
+        </member>
+        <member name="P:Eventador.API.Models.EventModel.EventStatus">
+            <summary>
+            Статус события
+            </summary>
+        </member>
+        <member name="P:Eventador.API.Models.EventModel.StartDate">
+            <summary>
+            Дата начала
+            </summary>
+        </member>
+        <member name="P:Eventador.API.Models.EventModel.EndDate">
+            <summary>
+            Дата окончания
+            </summary>
+        </member>
+        <member name="P:Eventador.API.Models.EventModel.Price">
+            <summary>
+            Стоимость входа/билета/участия/депозит
+            </summary>
+        </member>
+        <member name="P:Eventador.API.Models.EventModel.RegionId">
+            <summary>
+            Регион
+            </summary>
+        </member>
+        <member name="P:Eventador.API.Models.EventModel.Lat">
+            <summary>
+            Широта
+            </summary>
+        </member>
+        <member name="P:Eventador.API.Models.EventModel.Lon">
+            <summary>
+            Долгота
+            </summary>
+        </member>
+        <member name="P:Eventador.API.Models.EventModel.CreateDate">
+            <summary>
+            Дата создания
+            </summary>
+        </member>
+        <member name="P:Eventador.API.Models.EventModel.AuthorId">
+            <summary>
+            Id аккаунта создателя
+            </summary>
+        </member>
+        <member name="P:Eventador.API.Models.EventModel.AccessType">
+            <summary>
+            Тип доступа (видимости)
             </summary>
         </member>
         <member name="M:Eventador.API.Models.EventModel.Create(Eventador.Domain.Event)">
@@ -210,6 +437,16 @@
             <summary>
             Заголовок
             </summary>
+        </member>
+        <member name="P:Eventador.API.Models.SmallEventModel.Description">
+            <summary>
+            Описание
+            </summary>
+        </member>
+        <member name="P:Eventador.API.Models.SmallEventModel.TitleImageUrl">
+             <summary>
+            
+             </summary>
         </member>
         <member name="M:Eventador.API.Models.SmallEventModel.Create(Eventador.Domain.Event)">
              <summary>
@@ -235,6 +472,255 @@
              </summary>
              <param name="args"></param>
              <returns></returns>
+        </member>
+        <member name="T:Eventador.API.Requests.CredentialsRequest">
+            <summary>
+            Данные авторизации
+            </summary>
+        </member>
+        <member name="P:Eventador.API.Requests.CredentialsRequest.Username">
+            <summary>
+            Логин
+            </summary>
+        </member>
+        <member name="P:Eventador.API.Requests.CredentialsRequest.Password">
+            <summary>
+            Пароль
+            </summary>
+        </member>
+        <member name="T:Eventador.API.Requests.RecoverPasswordRequest">
+            <summary>
+            Запрос на восстановление пароля
+            </summary>
+        </member>
+        <member name="P:Eventador.API.Requests.RecoverPasswordRequest.Username">
+            <summary>
+            Логин пользователя. Номер телефона
+            </summary>
+        </member>
+        <member name="T:Eventador.API.Requests.RefreshTokenRequest">
+            <summary>
+            Запрос на создание Refresh-токена
+            </summary>
+        </member>
+        <member name="P:Eventador.API.Requests.RefreshTokenRequest.RefreshToken">
+            <summary>
+            Токен для обновления
+            </summary>
+        </member>
+        <member name="T:Eventador.API.Services.CacheRefreshTokenService">
+            <summary>
+            Сервис для работы с RefreshToken в кэш
+            </summary>
+        </member>
+        <member name="F:Eventador.API.Services.CacheRefreshTokenService.MaxCountStoredTokensPerUser">
+            <summary>
+            Максимальное количество хранимых refresh токенов для одного пользователя
+            </summary>
+        </member>
+        <member name="M:Eventador.API.Services.CacheRefreshTokenService.#ctor(Microsoft.Extensions.Caching.Distributed.IDistributedCache)">
+            <summary>
+            ctor
+            </summary>
+        </member>
+        <member name="M:Eventador.API.Services.CacheRefreshTokenService.SetRefreshToken(System.String,System.String,System.TimeSpan)">
+            <inheritdoc />
+        </member>
+        <member name="M:Eventador.API.Services.CacheRefreshTokenService.ValidRefreshToken(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Eventador.API.Services.CacheRefreshTokenService.DeleteAllRefreshToken(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Eventador.API.Services.CacheRefreshTokenService.DeleteRefreshToken(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Eventador.API.Services.CacheRefreshTokenService.GetJwtRefreshTokens(System.String)">
+            <summary>
+            Получить JWT токен refresh`а
+            </summary>
+            <param name="cacheKey">Ключ для получения из кэша</param>
+            <returns></returns>
+        </member>
+        <member name="M:Eventador.API.Services.CacheRefreshTokenService.GetStoredRefreshTokens(System.String)">
+            <summary>
+            Получить сохраненные refresh token`ы
+            </summary>
+            <param name="cacheKey">Ключ для получения из кэша</param>
+            <returns></returns>
+        </member>
+        <member name="M:Eventador.API.Services.CacheRefreshTokenService.GetCacheKey(System.String)">
+            <summary>
+            Получить ключ для кэша
+            </summary>
+            <param name="login"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Eventador.API.Services.IRefreshTokenService">
+            <summary>
+            Интерфейс для работы с RefreshToken
+            </summary>
+        </member>
+        <member name="M:Eventador.API.Services.IRefreshTokenService.SetRefreshToken(System.String,System.String,System.TimeSpan)">
+            <summary>
+            Установить refreshToken для логина пользователя
+            </summary>
+            <param name="refreshToken"></param>
+            <param name="login"></param>
+            <param name="cacheExpiration"></param>
+        </member>
+        <member name="M:Eventador.API.Services.IRefreshTokenService.ValidRefreshToken(System.String,System.String)">
+            <summary>
+            Проверить, что refreshToken есть для логина пользователя
+            </summary>
+            <param name="login"></param>
+            <param name="refreshToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Eventador.API.Services.IRefreshTokenService.DeleteAllRefreshToken(System.String)">
+            <summary>
+            Удаление токена
+            </summary>
+            <param name="login"></param>
+        </member>
+        <member name="M:Eventador.API.Services.IRefreshTokenService.DeleteRefreshToken(System.String,System.String)">
+            <summary>
+            Удаление токена
+            </summary>
+            <param name="login"></param>
+            <param name="refreshToken"></param>
+        </member>
+        <member name="T:Eventador.API.Services.ITokenService">
+            <summary>
+            Интерфейс сервис для работы с авторизационным токеном JWT
+            </summary>
+        </member>
+        <member name="M:Eventador.API.Services.ITokenService.GetToken(System.Security.Claims.ClaimsIdentity)">
+            <summary>
+            Получить токен
+            </summary>
+            <param name="claimsIdentity">Идентификационные данные</param>
+            <returns>Токен</returns>
+        </member>
+        <member name="T:Eventador.API.Services.ITokenWithRefreshService">
+            <summary>
+            Интерфейс сервис для работы с авторизационным JWT с обновлением авторизационного токена
+            </summary>
+        </member>
+        <member name="M:Eventador.API.Services.ITokenWithRefreshService.GetTokenByRefreshToken(System.Security.Claims.ClaimsIdentity,System.String)">
+            <summary>
+            Получить токен по refresh token
+            </summary>
+            <param name="claimsIdentity">Идентификационные данные</param>
+            <param name="refreshToken">Токен для обновления access token</param>
+            <returns>Токен</returns>
+        </member>
+        <member name="M:Eventador.API.Services.ITokenWithRefreshService.ValidRefreshToken(System.String,System.String)">
+            <summary>
+            Проверить refresh токен для пользователя
+            </summary>
+            <param name="login">Логин пользователя</param>
+            <param name="refreshTokenForCheck">refresh токен для проверки</param>
+            <returns>true-валидный,false - невалидный</returns>
+        </member>
+        <member name="M:Eventador.API.Services.ITokenWithRefreshService.DeleteAllRefreshToken(System.String)">
+            <summary>
+            Удалить все refresh токен
+            </summary>
+            <param name="login">Логин пользователя</param>
+        </member>
+        <member name="T:Eventador.API.Services.TokenWithRefreshService">
+            <summary>
+            Сервис для работы с авторизационным JWT с обновлением авторизационного токена
+            </summary>
+        </member>
+        <member name="F:Eventador.API.Services.TokenWithRefreshService.SecurityAlgorithm">
+            <summary>
+            Алгоритм шифрования
+            </summary>
+        </member>
+        <member name="M:Eventador.API.Services.TokenWithRefreshService.#ctor(Eventador.API.Services.IRefreshTokenService,Microsoft.Extensions.Options.IOptionsMonitor{Eventador.Services.Options.TokenOptions})">
+            <summary>
+            ctor
+            </summary>
+        </member>
+        <member name="M:Eventador.API.Services.TokenWithRefreshService.GetToken(System.Security.Claims.ClaimsIdentity)">
+            <inheritdoc />
+        </member>
+        <member name="M:Eventador.API.Services.TokenWithRefreshService.GetTokenByRefreshToken(System.Security.Claims.ClaimsIdentity,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Eventador.API.Services.TokenWithRefreshService.ValidRefreshToken(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Eventador.API.Services.TokenWithRefreshService.DeleteAllRefreshToken(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Eventador.API.Services.TokenWithRefreshService.GetLogin(System.Security.Claims.ClaimsIdentity)">
+            <summary>
+            Получить логин по идентификационным данным
+            </summary>
+            <param name="claimsIdentity">Идентификационные данные</param>
+            <returns></returns>
+        </member>
+        <member name="M:Eventador.API.Services.TokenWithRefreshService.GetClaimLogin(System.Security.Claims.ClaimsIdentity)">
+            <summary>
+            Получить идентификационные данные для логина
+            </summary>
+            <param name="claimsIdentity">Идентификационные данные</param>
+            <returns></returns>
+        </member>
+        <member name="M:Eventador.API.Services.TokenWithRefreshService.AddRefreshToken(System.String,System.String)">
+            <summary>
+            Добавить refresh token пользователю
+            </summary>
+            <param name="login">Логин</param>
+            <param name="refreshToken">refresh token</param>
+        </member>
+        <member name="M:Eventador.API.Services.TokenWithRefreshService.UpdateRefreshToken(System.String,System.String,System.String)">
+            <summary>
+            Обновить refresh token пользователю
+            </summary>
+            <param name="login">Логин</param>
+            <param name="newRefreshToken">Новый refresh token</param>
+            <param name="oldRefreshToken">Старый refresh token, который нужно заменить</param>
+        </member>
+        <member name="M:Eventador.API.Services.TokenWithRefreshService.CreateToken(System.Security.Claims.ClaimsIdentity)">
+            <summary>
+            Создать токен по идентификационным данным
+            </summary>
+            <param name="claimsIdentity">Идентификационные данные пользователя</param>
+            <returns>Токен</returns>
+        </member>
+        <member name="M:Eventador.API.Services.TokenWithRefreshService.GetAccessToken(System.Security.Claims.ClaimsIdentity,System.DateTimeOffset,System.DateTimeOffset)">
+            <summary>
+            Получить авторизационный токен
+            </summary>
+            <param name="claimsIdentity">Идентификационные данные</param>
+            <param name="dateFrom">Дата начала действия токена</param>
+            <param name="dateExpires">Дата истечения токена</param>
+            <returns></returns>
+        </member>
+        <member name="M:Eventador.API.Services.TokenWithRefreshService.GetRefreshToken(System.Security.Claims.ClaimsIdentity,System.DateTimeOffset,System.DateTimeOffset)">
+            <summary>
+            Получить токен для обновления токена авторизации
+            </summary>
+            <param name="claimsIdentity">Идентификационные данные</param>
+            <param name="dateFrom">Дата начала действия токена</param>
+            <param name="dateExpires">Дата истечения токена</param>
+            <returns></returns>
+        </member>
+        <member name="M:Eventador.API.Services.TokenWithRefreshService.GetExpirationAccessToken">
+            <summary>
+            Получить время истечения авторизационного токена
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Eventador.API.Services.TokenWithRefreshService.GetExpirationRefreshToken">
+            <summary>
+            Получить время истечения refresh token
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:Eventador.API.Startup">
              <summary>
@@ -275,6 +761,27 @@
             Базовая политика повторов с колебанием задержки
             <remarks>Политики, заданные с помощью этого метода расширения, обрабатывают HttpRequestException,
             ответы HTTP 5xx и ответы HTTP 408</remarks>
+            </summary>
+        </member>
+        <member name="M:Eventador.API.Startup.RegisterAuthentication(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Регистрация аутентификации
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:Eventador.API.Startup.RegisterTokenService(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Регистрация сервисов для работы с токеном
+            </summary>
+        </member>
+        <member name="M:Eventador.API.Startup.RegisterAuthorization(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Регистрация авторизации
+            </summary>
+        </member>
+        <member name="M:Eventador.API.Startup.RegisterAuthorizationHandler(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Регистрация обработчиков авторизации
             </summary>
         </member>
         <member name="M:Eventador.API.Startup.RegisterHealthChecks(Microsoft.Extensions.DependencyInjection.IServiceCollection)">

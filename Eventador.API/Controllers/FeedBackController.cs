@@ -29,6 +29,17 @@ namespace Eventador.API.Controllers
         }
 
         /// <summary>
+        /// Получить отзывы о событии
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet("Feedback/{id}")]
+        public async Task<string[]> GetEventFeedback(int id)
+        {
+            return new string[] { };
+        }
+
+        /// <summary>
         /// Получить рейтинг пользователя
         /// </summary>
         /// <param name="id"></param>

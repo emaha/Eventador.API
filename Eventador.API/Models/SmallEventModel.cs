@@ -18,6 +18,16 @@ namespace Eventador.API.Models
         public string Title { get; set; }
 
         /// <summary>
+        /// Описание
+        /// </summary>
+        public string Description { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public string TitleImageUrl { get; set; }
+
+        /// <summary>
         ///
         /// </summary>
         /// <param name="evnt"></param>
@@ -26,7 +36,9 @@ namespace Eventador.API.Models
         {
             return new SmallEventModel
             {
-                Title = evnt.Title
+                Title = evnt.Title,
+                Description = evnt.Description,
+                TitleImageUrl = evnt.TitleImageUrl
             };
         }
     }

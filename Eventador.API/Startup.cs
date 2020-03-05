@@ -17,6 +17,7 @@ using Refit;
 using Serilog;
 using System;
 using System.Globalization;
+using System.IO.Compression;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using Eventador.API.Authorization;
@@ -29,7 +30,9 @@ using Eventador.Data.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.Features;
+using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json;
 
 namespace Eventador.API
 {
@@ -78,26 +81,27 @@ namespace Eventador.API
         /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
+            //Serilog for DI
+            services.AddLogging(loggingBuilder =>
+                loggingBuilder.AddSerilog(dispose: true));
+
             // Конфигурация БД контекста
             string connectionString = Configuration["DbConfig:DbConnectionStrings:Eventador"];
             services.AddDbContext<EventadorDbContext>(options => options.UseNpgsql(connectionString
                     , x => x.MigrationsAssembly("Eventador.Data.Migrations")));
 
+            // Добавление компрессии на сайт с использованием Gzip
+            //
+            services.Configure<GzipCompressionProviderOptions>(options => options.Level = CompressionLevel.Fastest);
             services.AddResponseCompression(options => { options.EnableForHttps = true; });
 
             RegisterOptions(services);
-
             RegisterHealthChecks(services);
-
             RegisterAuthentication(services);
-
             RegisterAuthorization(services);
-
             RegisterServices(services);
             RegisterRepositories(services);
-
             RegisterRemoteServices(services);
-
             RegisterApi(services);
 
             // Для загрузки больших файлов на сервер
@@ -155,7 +159,7 @@ namespace Eventador.API
                 });
             }
 
-            services.AddControllers();
+            services.AddControllers().AddJsonOptions(options => { JsonSerializer.CreateOptionsByDefault(options); });
         }
 
         /// <summary>

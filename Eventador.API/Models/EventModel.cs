@@ -99,6 +99,8 @@ namespace Eventador.API.Models
         /// <returns></returns>
         public static EventModel Create(Event evnt)
         {
+            if (evnt == null) return null;
+
             return new EventModel
             {
                 Title = evnt.Title

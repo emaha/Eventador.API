@@ -1,20 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Security.Claims;
-using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
-using Eventador.API.Requests;
+﻿using Eventador.API.Requests;
 using Eventador.API.Services;
 using Eventador.Domain;
 using Eventador.Domain.Models;
-using Eventador.Services;
 using Eventador.Services.Contract;
 using JetBrains.Annotations;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace Eventador.API.Controllers
 {
@@ -156,11 +155,29 @@ namespace Eventador.API.Controllers
         [HttpPost("RecoverPassword")]
         public async Task<IActionResult> RecoverPassword(RecoverPasswordRequest request)
         {
+            var user = await _userService.GetByLogin(request.Username);
+            if (user == null)
+            {
+                _logger.LogWarning("Пользователь не найден");
+                return BadRequest();
+            }
+
+            user.Password = GeneratePassword(8);
+            await _userService.SaveChanges();
+
             // TODO: recover
+            // send email
 
             _tokenWithRefreshService.DeleteAllRefreshToken(request.Username);
 
             return Ok();
+        }
+
+        private string GeneratePassword(int length)
+        {
+            // TODO:
+
+            return "12345678";
         }
 
         /// <summary>

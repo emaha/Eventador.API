@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Eventador.Domain;
 using Eventador.Domain.Requests;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Eventador.API.Controllers
 {
@@ -13,6 +14,7 @@ namespace Eventador.API.Controllers
     /// </summary>
     [ApiController]
     [Route("[controller]")]
+    [Authorize]
     public class EventController : ControllerBase
     {
         private readonly IEventService _eventService;

@@ -1,15 +1,27 @@
-﻿using Eventador.Services;
+﻿using Eventador.API.Authorization;
+using Eventador.API.Middlewares;
+using Eventador.API.Services;
+using Eventador.Common.JsonSerializer;
+using Eventador.Common.Middlewares;
+using Eventador.Data;
+using Eventador.Data.Contract;
+using Eventador.Data.Repositories;
+using Eventador.Services;
 using Eventador.Services.Contract;
 using Eventador.Services.Contract.Api;
 using Eventador.Services.Options;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.HttpOverrides;
-using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Polly;
 using Polly.Extensions.Http;
@@ -20,19 +32,7 @@ using System.Globalization;
 using System.IO.Compression;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using Eventador.API.Authorization;
-using Eventador.API.Middlewares;
-using Eventador.API.Services;
-using Eventador.Common.Middlewares;
-using Eventador.Data;
-using Eventador.Data.Contract;
-using Eventador.Data.Repositories;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http.Features;
-using Microsoft.AspNetCore.ResponseCompression;
-using Microsoft.IdentityModel.Tokens;
-using Newtonsoft.Json;
+using Microsoft.AspNetCore.Localization;
 
 namespace Eventador.API
 {
@@ -95,14 +95,13 @@ namespace Eventador.API
             services.Configure<GzipCompressionProviderOptions>(options => options.Level = CompressionLevel.Fastest);
             services.AddResponseCompression(options => { options.EnableForHttps = true; });
 
-            RegisterOptions(services);
-            RegisterHealthChecks(services);
-            RegisterAuthentication(services);
-            RegisterAuthorization(services);
-            RegisterServices(services);
-            RegisterRepositories(services);
-            RegisterRemoteServices(services);
-            RegisterApi(services);
+            var supportedCultures = new[] { new CultureInfo("ru-RU") };
+            services.Configure<RequestLocalizationOptions>(options =>
+            {
+                options.DefaultRequestCulture = new RequestCulture("ru-RU");
+                options.SupportedCultures = supportedCultures;
+                options.SupportedUICultures = supportedCultures;
+            });
 
             // Для загрузки больших файлов на сервер
             services.Configure<FormOptions>(x =>
@@ -111,6 +110,41 @@ namespace Eventador.API
                 x.MultipartBodyLengthLimit = 10 * 1024 * 1024;
             });
 
+            RegisterApi(services);
+            RegisterServices(services);
+            RegisterRepositories(services);
+
+            RegisterAuthentication(services);
+            RegisterAuthorization(services);
+            RegisterOptions(services);
+
+            RegisterRemoteServices(services);
+            RegisterHealthChecks(services);
+
+            RegisterSwagger(services);
+            RegisterDistributedCache(services);
+
+            services.AddControllers().AddJsonOptions(options => { JsonSerializer.CreateOptionsByDefault(options); });
+        }
+
+        private void RegisterDistributedCache(IServiceCollection services)
+        {
+            if (Environment.IsDevelopment())
+            {
+                services.AddDistributedMemoryCache();
+            }
+            else
+            {
+                services.AddDistributedRedisCache(option =>
+                {
+                    option.Configuration = Configuration[ConfigurationConnectionStringRedis];
+                    option.InstanceName = "eventador:";
+                });
+            }
+        }
+
+        private void RegisterSwagger(IServiceCollection services)
+        {
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
@@ -145,21 +179,6 @@ namespace Eventador.API
 
                 c.IncludeXmlComments($@"{AppDomain.CurrentDomain.BaseDirectory}eventador.api.xml");
             });
-
-            if (Environment.IsDevelopment())
-            {
-                services.AddDistributedMemoryCache();
-            }
-            else
-            {
-                services.AddDistributedRedisCache(option =>
-                {
-                    option.Configuration = Configuration[ConfigurationConnectionStringRedis];
-                    option.InstanceName = "eventador:";
-                });
-            }
-
-            services.AddControllers().AddJsonOptions(options => { JsonSerializer.CreateOptionsByDefault(options); });
         }
 
         /// <summary>
@@ -176,30 +195,24 @@ namespace Eventador.API
                 app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "Eventador API V1"); });
             }
 
-            app.UseForwardedHeaders(new ForwardedHeadersOptions
-            {
-                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
-            });
+            //app.UseForwardedHeaders(new ForwardedHeadersOptions
+            //{
+            //    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+            //});
 
             app.UseResponseCompression();
             app.UseRequestLocalization();
 
+            app.UseIpEnrichLog();
+            app.UseIdentityNameEnrichLog();
+
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
-            app.UseIpEnrichLog();
 
             //app.UseMiddleware<TokenAuthenticationMiddleware>();
 
             app.UseVersion("/version");
-
-            var supportedCultures = new[] { new CultureInfo("ru-RU") };
-            app.UseRequestLocalization(new RequestLocalizationOptions
-            {
-                DefaultRequestCulture = new RequestCulture("ru-RU"),
-                SupportedCultures = supportedCultures,
-                SupportedUICultures = supportedCultures
-            });
 
             app.UseEndpoints(endpoints =>
             {
@@ -226,6 +239,7 @@ namespace Eventador.API
 
         private void RegisterOptions(IServiceCollection services)
         {
+            services.AddOptions();
             services.Configure<ServiceOption>(Configuration.GetSection("ServiceOption"));
             services.Configure<TokenOptions>(Configuration.GetSection("TokenOptions"));
         }

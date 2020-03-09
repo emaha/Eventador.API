@@ -34,7 +34,7 @@ namespace Eventador.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("Feedback/{id}")]
-        public async Task<string[]> GetEventFeedback(int id)
+        public async Task<string[]> GetEventFeedback(long id)
         {
             return new string[] { };
         }
@@ -45,7 +45,7 @@ namespace Eventador.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("Rating/{id}")]
-        public async Task<double> GetPersonRating(int id)
+        public async Task<double> GetPersonRating(long id)
         {
             return new Random().NextDouble() * 10.0f;
         }

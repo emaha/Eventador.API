@@ -115,20 +115,20 @@
             </summary>
             <param name="eventService"></param>
         </member>
-        <member name="M:Eventador.API.Controllers.EventController.GetById(System.Int32)">
+        <member name="M:Eventador.API.Controllers.EventController.GetById(System.Int64)">
             <summary>
             Получить по id
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:Eventador.API.Controllers.EventController.GetEventsByRegion(System.Int32)">
+        <member name="M:Eventador.API.Controllers.EventController.GetEventsByRegion(System.Int64)">
             <summary>
             Получить события в регионе
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Eventador.API.Controllers.EventController.GetEventsByAuthor(System.Int32)">
+        <member name="M:Eventador.API.Controllers.EventController.GetEventsByAuthor(System.Int64)">
             <summary>
             Получить события определённого пользователя
             </summary>
@@ -148,14 +148,14 @@
             <param name="request"></param>
             <returns></returns>
         </member>
-        <member name="M:Eventador.API.Controllers.EventController.DeleteEvent(System.Int32)">
+        <member name="M:Eventador.API.Controllers.EventController.DeleteEvent(System.Int64)">
             <summary>
             Удаление события
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:Eventador.API.Controllers.EventController.FinishEvent(System.Int32)">
+        <member name="M:Eventador.API.Controllers.EventController.FinishEvent(System.Int64)">
             <summary>
             Завершение события
             </summary>
@@ -174,14 +174,14 @@
             <param name="request"></param>
             <returns></returns>
         </member>
-        <member name="M:Eventador.API.Controllers.FeedBackController.GetEventFeedback(System.Int32)">
+        <member name="M:Eventador.API.Controllers.FeedBackController.GetEventFeedback(System.Int64)">
             <summary>
             Получить отзывы о событии
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:Eventador.API.Controllers.FeedBackController.GetPersonRating(System.Int32)">
+        <member name="M:Eventador.API.Controllers.FeedBackController.GetPersonRating(System.Int64)">
             <summary>
             Получить рейтинг пользователя
             </summary>
@@ -212,28 +212,28 @@
             Контроллер регистрации
             </summary>
         </member>
-        <member name="M:Eventador.API.Controllers.RegistrationController.GetByEventId(System.Int32)">
+        <member name="M:Eventador.API.Controllers.RegistrationController.GetByEventId(System.Int64)">
             <summary>
             Получить по id события
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:Eventador.API.Controllers.RegistrationController.GetByUserId(System.Int32)">
+        <member name="M:Eventador.API.Controllers.RegistrationController.GetByUserId(System.Int64)">
             <summary>
             Получить по id пользователя
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:Eventador.API.Controllers.RegistrationController.Register(System.Int32)">
+        <member name="M:Eventador.API.Controllers.RegistrationController.Register(System.Int64)">
             <summary>
             Зарегистрироваться на событие
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:Eventador.API.Controllers.RegistrationController.UnRegister(System.Int32)">
+        <member name="M:Eventador.API.Controllers.RegistrationController.UnRegister(System.Int64)">
             <summary>
             Отписаться от события
             </summary>
@@ -245,7 +245,7 @@
             Контроллер пользователей
             </summary>
         </member>
-        <member name="M:Eventador.API.Controllers.UserController.Get(System.Int32)">
+        <member name="M:Eventador.API.Controllers.UserController.Get(System.Int64)">
             <summary>
             Получить пользователя
             </summary>
@@ -276,19 +276,48 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Eventador.API.Controllers.UserController.Subscribe(System.Int32)">
+        <member name="M:Eventador.API.Controllers.UserController.Subscribe(System.Int64)">
             <summary>
             Подписаться
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:Eventador.API.Controllers.UserController.Unsubscribe(System.Int32)">
+        <member name="M:Eventador.API.Controllers.UserController.Unsubscribe(System.Int64)">
             <summary>
             Отписаться
             </summary>
             <param name="id"></param>
             <returns></returns>
+        </member>
+        <member name="T:Eventador.API.Middlewares.IdentityNameEnrichLogMiddleware">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Eventador.API.Middlewares.IdentityNameEnrichLogMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate)">
+             <summary>
+            
+             </summary>
+             <param name="next"></param>
+        </member>
+        <member name="M:Eventador.API.Middlewares.IdentityNameEnrichLogMiddleware.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext)">
+             <summary>
+            
+             </summary>
+             <param name="context"></param>
+             <returns></returns>
+        </member>
+        <member name="T:Eventador.API.Middlewares.IdentityNameEnrichLogMiddlewareExtensions">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Eventador.API.Middlewares.IdentityNameEnrichLogMiddlewareExtensions.UseIdentityNameEnrichLog(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+             <summary>
+            
+             </summary>
+             <param name="app"></param>
         </member>
         <member name="T:Eventador.API.Middlewares.TokenAuthenticationMiddleware">
             <summary>
@@ -334,6 +363,11 @@
         <member name="T:Eventador.API.Models.EventModel">
             <summary>
             Упрощенная модель события
+            </summary>
+        </member>
+        <member name="P:Eventador.API.Models.EventModel.Id">
+            <summary>
+            
             </summary>
         </member>
         <member name="P:Eventador.API.Models.EventModel.Title">

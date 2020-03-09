@@ -14,13 +14,13 @@ namespace Eventador.Services.Contract
         /// </summary>
         /// <param name="regionId"></param>
         /// <returns></returns>
-        Task<Event[]> GetByRegion(int regionId);
+        Task<Event[]> GetByRegion(long regionId);
 
         /// <summary>
         ///
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        Task<Event[]> GetByAuthorId(int id);
+        Task<Event[]> GetByAuthorId(long id);
     }
 }

@@ -17,7 +17,7 @@ namespace Eventador.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public async Task<UserResponseModel> Get(int id)
+        public async Task<UserResponseModel> Get(long id)
         {
             return null;
         }
@@ -68,7 +68,7 @@ namespace Eventador.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpPost("Subscriber/{id}")]
-        public async Task<IActionResult> Subscribe(int id)
+        public async Task<IActionResult> Subscribe(long id)
         {
             return Ok();
         }
@@ -79,7 +79,7 @@ namespace Eventador.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpPost("Unsubscribe/{id}")]
-        public async Task<IActionResult> Unsubscribe(int id)
+        public async Task<IActionResult> Unsubscribe(long id)
         {
             return Ok();
         }

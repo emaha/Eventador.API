@@ -14,7 +14,7 @@ namespace Eventador.API.Controllers
     /// </summary>
     [ApiController]
     [Route("[controller]")]
-    [Authorize]
+    //[Authorize]
     public class EventController : ControllerBase
     {
         private readonly IEventService _eventService;
@@ -34,7 +34,7 @@ namespace Eventador.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public async Task<EventModel> GetById(int id)
+        public async Task<EventModel> GetById(long id)
         {
             var evnt = await _eventService.GetById(id);
             var model = EventModel.Create(evnt);
@@ -47,12 +47,9 @@ namespace Eventador.API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("Region/{id}")]
-        public async Task<SmallEventModel[]> GetEventsByRegion(int id)
+        public async Task<SmallEventModel[]> GetEventsByRegion(long id)
         {
-            //TODO: получить текущий регион для местоположения
-            int regionId = 1;
-
-            var events = await _eventService.GetByRegion(regionId);
+            var events = await _eventService.GetByRegion(id);
 
             return events.Select(SmallEventModel.Create).ToArray();
         }
@@ -62,7 +59,7 @@ namespace Eventador.API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("Author/{id}")]
-        public async Task<SmallEventModel[]> GetEventsByAuthor(int id)
+        public async Task<SmallEventModel[]> GetEventsByAuthor(long id)
         {
             var events = await _eventService.GetByAuthorId(id);
 
@@ -107,7 +104,7 @@ namespace Eventador.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteEvent(int id)
+        public async Task<IActionResult> DeleteEvent(long id)
         {
             await _eventService.Delete(id);
             return Ok();
@@ -119,7 +116,7 @@ namespace Eventador.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpPost("{id}/Finish")]
-        public async Task<IActionResult> FinishEvent(int id)
+        public async Task<IActionResult> FinishEvent(long id)
         {
             var evnt = await _eventService.GetById(id);
             evnt.Finish();

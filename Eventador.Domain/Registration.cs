@@ -14,7 +14,7 @@ namespace Eventador.Domain
         ///
         /// </summary>
         [Column("id")]
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         /// <summary>
         ///

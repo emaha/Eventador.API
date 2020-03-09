@@ -10,7 +10,7 @@ namespace Eventador.Domain.Requests
     /// </summary>
     public class ComplaintCreateRequest
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         public ComplaintType ComplaintType { get; set; }
 

@@ -18,7 +18,7 @@ namespace Eventador.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("Event/{id}")]
-        public async Task<UserResponseModel> GetByEventId(int id)
+        public async Task<UserResponseModel> GetByEventId(long id)
         {
             return null;
         }
@@ -29,7 +29,7 @@ namespace Eventador.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("User/{id}")]
-        public async Task<UserResponseModel> GetByUserId(int id)
+        public async Task<UserResponseModel> GetByUserId(long id)
         {
             return null;
         }
@@ -40,7 +40,7 @@ namespace Eventador.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpPost("Register/{id}")]
-        public async Task<IActionResult> Register(int id)
+        public async Task<IActionResult> Register(long id)
         {
             Registration registration = new Registration();
             // TODO: Create
@@ -54,7 +54,7 @@ namespace Eventador.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpPost("UnRegister/{id}")]
-        public async Task<IActionResult> UnRegister(int id)
+        public async Task<IActionResult> UnRegister(long id)
         {
             // TODO: Delete
 

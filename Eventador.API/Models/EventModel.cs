@@ -1,7 +1,7 @@
-﻿using System;
-using Eventador.Domain;
+﻿using Eventador.Domain;
 using Eventador.Domain.Statuses;
 using Eventador.Domain.Types;
+using System;
 
 namespace Eventador.API.Models
 {
@@ -10,6 +10,11 @@ namespace Eventador.API.Models
     /// </summary>
     public class EventModel
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        public long Id { get; set; }
+
         /// <summary>
         /// Заголовок
         /// </summary>
@@ -103,6 +108,7 @@ namespace Eventador.API.Models
 
             return new EventModel
             {
+                Id = evnt.Id,
                 Title = evnt.Title
             };
         }

@@ -10,7 +10,7 @@ namespace Eventador.API.Models
         /// <summary>
         ///
         /// </summary>
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         /// <summary>
         /// Заголовок
@@ -36,6 +36,7 @@ namespace Eventador.API.Models
         {
             return new SmallEventModel
             {
+                Id = evnt.Id,
                 Title = evnt.Title,
                 Description = evnt.Description,
                 TitleImageUrl = evnt.TitleImageUrl

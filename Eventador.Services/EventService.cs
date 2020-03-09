@@ -15,12 +15,12 @@ namespace Eventador.Services
             _repository = repository;
         }
 
-        public async Task<Event[]> GetByRegion(int regionId)
+        public async Task<Event[]> GetByRegion(long regionId)
         {
             return await _repository.GetAll(x => x.RegionId == regionId);
         }
 
-        public async Task<Event[]> GetByAuthorId(int id)
+        public async Task<Event[]> GetByAuthorId(long id)
         {
             return await _repository.GetAll(x => x.AuthorId == id);
         }

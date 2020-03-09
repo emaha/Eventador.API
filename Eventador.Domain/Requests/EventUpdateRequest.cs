@@ -8,7 +8,7 @@ namespace Eventador.Domain.Requests
     /// </summary>
     public class EventUpdateRequest
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public string AdditionalInfo { get; set; }

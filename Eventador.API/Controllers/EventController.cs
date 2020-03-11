@@ -43,7 +43,7 @@ namespace Eventador.API.Controllers
         }
 
         /// <summary>
-        /// Получить события в регионе
+        /// Получить события в регионе (рядом)
         /// </summary>
         /// <returns></returns>
         [HttpGet("Region/{id}")]
@@ -111,6 +111,23 @@ namespace Eventador.API.Controllers
         }
 
         /// <summary>
+        /// Активация события
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpPost("{id}/Activate")]
+        public async Task<IActionResult> ActivateEvent(long id)
+        {
+            var evnt = await _eventService.GetById(id);
+            if (evnt == null) return NotFound();
+
+            evnt.Activate();
+            await _eventService.SaveChanges();
+
+            return Ok();
+        }
+
+        /// <summary>
         /// Завершение события
         /// </summary>
         /// <param name="id"></param>
@@ -119,7 +136,44 @@ namespace Eventador.API.Controllers
         public async Task<IActionResult> FinishEvent(long id)
         {
             var evnt = await _eventService.GetById(id);
+            if (evnt == null) return NotFound();
+
             evnt.Finish();
+            await _eventService.SaveChanges();
+
+            return Ok();
+        }
+
+        /// <summary>
+        /// Приостановка события
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpPost("{id}/Suspend")]
+        public async Task<IActionResult> SuspendEvent(long id)
+        {
+            var evnt = await _eventService.GetById(id);
+            if (evnt == null) return NotFound();
+
+            evnt.Suspend();
+            await _eventService.SaveChanges();
+
+            return Ok();
+        }
+
+        /// <summary>
+        /// Отмена события
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpPost("{id}/Cancel")]
+        public async Task<IActionResult> CancelEvent(long id)
+        {
+            var evnt = await _eventService.GetById(id);
+            if (evnt == null) return NotFound();
+
+            evnt.Cancel();
+            await _eventService.SaveChanges();
 
             return Ok();
         }

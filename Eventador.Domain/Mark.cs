@@ -34,7 +34,7 @@ namespace Eventador.Domain
         [Column("create_date")]
         public DateTime CreateDate { get; set; }
 
-        public static Mark CreateFromRequest(RateEventCreateRequest request)
+        public static Mark Create(RateEventCreateRequest request)
         {
             return new Mark
             {

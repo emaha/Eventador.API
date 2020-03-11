@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Eventador.Domain.Types;
+﻿using Eventador.Domain.Types;
 
 namespace Eventador.Domain.Requests
 {
@@ -10,10 +7,19 @@ namespace Eventador.Domain.Requests
     /// </summary>
     public class ComplaintCreateRequest
     {
-        public long Id { get; set; }
+        /// <summary>
+        /// Id сущности(субъекта)
+        /// </summary>
+        public long SubjectId { get; set; }
 
+        /// <summary>
+        /// Тип жалобы
+        /// </summary>
         public ComplaintType ComplaintType { get; set; }
 
+        /// <summary>
+        /// Текст
+        /// </summary>
         public string ReasonText { get; set; }
     }
 }

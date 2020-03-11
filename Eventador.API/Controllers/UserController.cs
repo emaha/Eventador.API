@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
+﻿using Eventador.Domain.Requests;
+using Eventador.Services.Contract;
 using Eventador.Services.Contract.Api;
+using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace Eventador.API.Controllers
 {
@@ -11,6 +13,17 @@ namespace Eventador.API.Controllers
     [Route("[controller]")]
     public class UserController : ControllerBase
     {
+        private readonly IUserService _userService;
+
+        /// <summary>
+        /// ctor
+        /// </summary>
+        /// <param name="userService"></param>
+        public UserController(IUserService userService)
+        {
+            _userService = userService;
+        }
+
         /// <summary>
         /// Получить пользователя
         /// </summary>
@@ -27,8 +40,11 @@ namespace Eventador.API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> Create()
+        public async Task<IActionResult> Create(UserCreateRequest request)
         {
+            var user = Domain.User.Create(request);
+            await _userService.Add(user);
+
             return Ok();
         }
 
@@ -37,28 +53,14 @@ namespace Eventador.API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPut]
-        public async Task<IActionResult> Update()
+        public async Task<IActionResult> Update(UserUpdateRequest request)
         {
-            return Ok();
-        }
+            var user = await _userService.GetById(request.Id);
+            if (user == null) return NotFound();
 
-        /// <summary>
-        /// Заблокировать пользователя
-        /// </summary>
-        /// <returns></returns>
-        [HttpPost("Block")]
-        public async Task<IActionResult> Block()
-        {
-            return Ok();
-        }
+            user.Update(request);
+            await _userService.SaveChanges();
 
-        /// <summary>
-        /// Разблокировать пользователя
-        /// </summary>
-        /// <returns></returns>
-        [HttpPost("Unblock")]
-        public async Task<IActionResult> Unblock()
-        {
             return Ok();
         }
 

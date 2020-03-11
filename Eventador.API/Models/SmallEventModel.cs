@@ -8,7 +8,7 @@ namespace Eventador.API.Models
     public class SmallEventModel
     {
         /// <summary>
-        ///
+        /// Id
         /// </summary>
         public long Id { get; set; }
 
@@ -23,12 +23,12 @@ namespace Eventador.API.Models
         public string Description { get; set; }
 
         /// <summary>
-        ///
+        /// Заголовочная картинка
         /// </summary>
         public string TitleImageUrl { get; set; }
 
         /// <summary>
-        ///
+        /// Создать из запроса
         /// </summary>
         /// <param name="evnt"></param>
         /// <returns></returns>

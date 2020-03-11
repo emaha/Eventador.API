@@ -13,6 +13,7 @@ namespace Eventador.API.Middlewares
     /// <summary>
     /// Middleware для аутентификации через токен
     /// </summary>
+    [Obsolete("Используется другой способ авторизации")]
     public class TokenAuthenticationMiddleware
     {
         private const string IdentityName = "Service";

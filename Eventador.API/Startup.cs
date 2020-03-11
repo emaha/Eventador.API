@@ -248,6 +248,7 @@ namespace Eventador.API
             services.AddScoped<IEventRepository, EventRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IMarkRepository, MarkRepository>();
+            services.AddScoped<IParticipationRepository, ParticipationRepository>();
         }
 
         private void RegisterServices(IServiceCollection services)
@@ -255,6 +256,7 @@ namespace Eventador.API
             services.AddScoped<IEventService, EventService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IMarkService, MarkService>();
+            services.AddScoped<IParticipationService, ParticipationService>();
         }
 
         /// <summary>

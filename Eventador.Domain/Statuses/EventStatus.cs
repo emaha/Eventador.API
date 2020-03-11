@@ -16,8 +16,18 @@
         ACTIVE = 1,
 
         /// <summary>
+        /// Приостановлено
+        /// </summary>
+        SUSPENDED = 2,
+
+        /// <summary>
         /// Завершен
         /// </summary>
-        FINISHED = 2
+        FINISHED = 3,
+
+        /// <summary>
+        /// Отменено
+        /// </summary>
+        CANCELED = 4
     }
 }

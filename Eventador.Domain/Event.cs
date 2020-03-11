@@ -103,6 +103,12 @@ namespace Eventador.Domain
         public DateTime CreateDate { get; set; }
 
         /// <summary>
+        /// Дата обновления
+        /// </summary>
+        [Column("change_date")]
+        public DateTime ChangeDate { get; set; }
+
+        /// <summary>
         /// Id аккаунта создателя
         /// </summary>
         [Column("author_id")]
@@ -136,6 +142,7 @@ namespace Eventador.Domain
                 EventType = request.EventType,
                 EventStatus = EventStatus.ACTIVE,
                 CreateDate = DateTime.UtcNow,
+                ChangeDate = DateTime.UtcNow,
                 AuthorId = authorId
             };
         }
@@ -150,8 +157,18 @@ namespace Eventador.Domain
 
             Title = request.Title;
             Description = request.Description;
+            ChangeDate = DateTime.UtcNow;
 
             // TODO:
+        }
+
+        /// <summary>
+        /// Активировать
+        /// </summary>
+        public void Activate()
+        {
+            EventStatus = EventStatus.ACTIVE;
+            ChangeDate = DateTime.UtcNow;
         }
 
         /// <summary>
@@ -160,6 +177,25 @@ namespace Eventador.Domain
         public void Finish()
         {
             EventStatus = EventStatus.FINISHED;
+            ChangeDate = DateTime.UtcNow;
+        }
+
+        /// <summary>
+        /// Приостановить
+        /// </summary>
+        public void Suspend()
+        {
+            EventStatus = EventStatus.SUSPENDED;
+            ChangeDate = DateTime.UtcNow;
+        }
+
+        /// <summary>
+        /// Отменить (не удаление)
+        /// </summary>
+        public void Cancel()
+        {
+            EventStatus = EventStatus.CANCELED;
+            ChangeDate = DateTime.UtcNow;
         }
     }
 }

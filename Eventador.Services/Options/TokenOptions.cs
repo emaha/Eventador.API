@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using JetBrains.Annotations;
+﻿using JetBrains.Annotations;
 using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace Eventador.Services.Options
 {

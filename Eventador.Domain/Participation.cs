@@ -1,35 +1,34 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
-using Eventador.Domain.Requests;
 
 namespace Eventador.Domain
 {
     /// <summary>
-    /// Регистрации на событие
+    /// Участия в событие
     /// </summary>
-    [Table("registration")]
-    public class Registration
+    [Table("participations")]
+    public class Participation
     {
         /// <summary>
-        ///
+        /// Id
         /// </summary>
         [Column("id")]
         public long Id { get; set; }
 
         /// <summary>
-        ///
+        /// Пользователь
         /// </summary>
         [Column("user_id")]
         public int UserId { get; set; }
 
         /// <summary>
-        ///
+        /// Событие
         /// </summary>
         [Column("event_id")]
-        public string EventId { get; set; }
+        public long EventId { get; set; }
 
         /// <summary>
-        ///
+        /// Дата создания
         /// </summary>
         [Column("create_date")]
         public DateTime CreateDate { get; set; }

@@ -1,5 +1,6 @@
 ﻿using Eventador.Domain.Types;
 using System.ComponentModel.DataAnnotations.Schema;
+using Eventador.Domain.Requests;
 
 namespace Eventador.Domain
 {
@@ -88,6 +89,25 @@ namespace Eventador.Domain
         public bool VerifyPassword(string hashPassword)
         {
             return Password == hashPassword;
+        }
+
+        /// <summary>
+        /// Создание пользователя из запроса
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public static User Create(UserCreateRequest request)
+        {
+            return new User();
+        }
+
+        /// <summary>
+        /// Обновление пользователя запросом
+        /// </summary>
+        /// <param name="request"></param>
+        public void Update(UserUpdateRequest request)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

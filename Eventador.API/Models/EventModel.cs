@@ -11,7 +11,7 @@ namespace Eventador.API.Models
     public class EventModel
     {
         /// <summary>
-        /// 
+        /// Id
         /// </summary>
         public long Id { get; set; }
 
@@ -31,12 +31,12 @@ namespace Eventador.API.Models
         public string AdditionalInfo { get; set; }
 
         /// <summary>
-        ///
+        /// Заголовочная картинка
         /// </summary>
         public string TitleImageUrl { get; set; }
 
         /// <summary>
-        ///
+        /// Список картинок отображаемых в деталях
         /// </summary>
         public string[] ImageUrls { get; set; }
 

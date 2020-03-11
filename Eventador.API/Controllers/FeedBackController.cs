@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Runtime.InteropServices.ComTypes;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using Eventador.Domain;
 using Eventador.Domain.Requests;
+using Eventador.Services.Contract;
 
 namespace Eventador.API.Controllers
 {
@@ -13,6 +15,17 @@ namespace Eventador.API.Controllers
     [Route("[controller]")]
     public class FeedBackController : ControllerBase
     {
+        private readonly IMarkService _markService;
+
+        /// <summary>
+        /// ctor
+        /// </summary>
+        /// <param name="markService"></param>
+        public FeedBackController(IMarkService markService)
+        {
+            _markService = markService;
+        }
+
         /// <summary>
         /// Оценить событие
         /// </summary>
@@ -21,7 +34,7 @@ namespace Eventador.API.Controllers
         [HttpPost("RateEvent")]
         public async Task<IActionResult> RateEvent(RateEventCreateRequest request)
         {
-            Mark mark = Mark.CreateFromRequest(request);
+            Mark mark = Mark.Create(request);
 
             // TODO: проверить на уже существующие оценки и добавление оценки
 
@@ -33,9 +46,10 @@ namespace Eventador.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("Feedback/{id}")]
+        [HttpGet("Event/{id}")]
         public async Task<string[]> GetEventFeedback(long id)
         {
+            // TODO: need pagination
             return new string[] { };
         }
 
@@ -44,8 +58,19 @@ namespace Eventador.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("Rating/{id}")]
+        [HttpGet("PersonRating/{id}")]
         public async Task<double> GetPersonRating(long id)
+        {
+            return new Random().NextDouble() * 10.0f;
+        }
+
+        /// <summary>
+        /// Получить рейтинг события
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet("EventRating/{id}")]
+        public async Task<double> GetEventRating(long id)
         {
             return new Random().NextDouble() * 10.0f;
         }

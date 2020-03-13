@@ -19,7 +19,7 @@ namespace Eventador.Domain
         /// Пользователь
         /// </summary>
         [Column("user_id")]
-        public int UserId { get; set; }
+        public long UserId { get; set; }
 
         /// <summary>
         /// Событие
@@ -32,5 +32,21 @@ namespace Eventador.Domain
         /// </summary>
         [Column("create_date")]
         public DateTime CreateDate { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="eventId"></param>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public static Participation Create(long eventId, long userId)
+        {
+            return new Participation()
+            {
+                EventId = eventId,
+                UserId = userId,
+                CreateDate = DateTime.UtcNow
+            };
+        }
     }
 }

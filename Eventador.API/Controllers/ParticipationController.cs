@@ -1,14 +1,13 @@
-﻿using System.Linq;
-using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
+﻿using Eventador.API.Models;
 using Eventador.Domain;
 using Eventador.Services.Contract;
 using Eventador.Services.Contract.Api;
+using Microsoft.AspNetCore.Mvc;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Eventador.API.Controllers
 {
-    // getIn leave
-
     /// <summary>
     /// Контроллер участия (добавление в список участников события)
     /// </summary>
@@ -32,7 +31,7 @@ namespace Eventador.API.Controllers
         }
 
         /// <summary>
-        /// Получить список людей зарегистрированных на событие по Id события
+        /// Получить список людей зарегистрированных на событие по его Id
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -50,32 +49,60 @@ namespace Eventador.API.Controllers
         }
 
         /// <summary>
-        /// Зарегистрироваться на событие
+        /// Получить события в которых участвует пользователь
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpPost("Register/{id}")]
-        public async Task<IActionResult> Register(long id)
+        [HttpGet("User/{id}")]
+        public async Task<SmallEventModel[]> GetByUserId(long id)
         {
-            Participation participation = new Participation();
-            // TODO: Create
+            var participations = await _participationService.GetByUserId(id);
+            var events = await _eventService.GetByIds(participations.Select(x => x.Id).ToArray());
+            var models = events.Select(SmallEventModel.Create).ToArray();
+
+            return models;
+        }
+
+        /// <summary>
+        /// Зарегистрироваться на событие
+        /// </summary>
+        /// <param name="eventId"></param>
+        /// <returns></returns>
+        [HttpPost("Register/{eventId}")]
+        public async Task<IActionResult> Register(long eventId)
+        {
+            long userId = 1; //TODO:
+            var participations = await _participationService.GetByEventId(eventId);
+            if (participations.Select(x => x.UserId).Contains(userId))
+            {
+                return Ok("Already registered");
+            }
+
+            var participation = Participation.Create(eventId, userId);
             await _participationService.Add(participation);
 
-            return Ok();
+            return Ok("Successful registered");
         }
 
         /// <summary>
         /// Отписаться от события
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="eventId"></param>
         /// <returns></returns>
-        [HttpPost("Unregister/{id}")]
-        public async Task<IActionResult> Unregister(long id)
+        [HttpPost("Unregister/{eventId}")]
+        public async Task<IActionResult> Unregister(long eventId)
         {
-            await _participationService.Delete(id);
-            // TODO: Delete
+            long userId = 1; //TODO:
+            var participations = await _participationService.GetByEventId(eventId);
+            var participation = participations.FirstOrDefault(x => x.UserId == userId);
 
-            return Ok();
+            if (participation == null)
+            {
+                return Ok("Not registered");
+            }
+
+            await _participationService.Delete(participation.Id);
+            return Ok("Successful unregistered");
         }
     }
 }

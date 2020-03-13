@@ -22,5 +22,12 @@ namespace Eventador.Services.Contract
         /// <param name="id"></param>
         /// <returns></returns>
         Task<Event[]> GetByAuthorId(long id);
+
+        /// <summary>
+        /// Получить несколько событий по Id
+        /// </summary>
+        /// <param name="ids"></param>
+        /// <returns></returns>
+        Task<Event[]> GetByIds(long[] ids);
     }
 }

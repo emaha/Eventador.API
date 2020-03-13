@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Eventador.Common.Services;
 using Eventador.Data.Contract;
 using Eventador.Domain;
@@ -18,6 +19,11 @@ namespace Eventador.Services
         public async Task<Participation[]> GetByEventId(long id)
         {
             return await _repository.GetAll(x => x.EventId == id);
+        }
+
+        public async Task<Participation[]> GetByUserId(long id)
+        {
+            return await _repository.GetAll(x => x.UserId == id && x.CreateDate > DateTime.UtcNow.AddMonths(3));
         }
     }
 }

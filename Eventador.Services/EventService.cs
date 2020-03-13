@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using Eventador.Common.Services;
 using Eventador.Data.Contract;
 using Eventador.Domain;
@@ -23,6 +24,11 @@ namespace Eventador.Services
         public async Task<Event[]> GetByAuthorId(long id)
         {
             return await _repository.GetAll(x => x.AuthorId == id);
+        }
+
+        public async Task<Event[]> GetByIds(long[] ids)
+        {
+            return await _repository.GetAll(x => ids.Contains(x.Id));
         }
     }
 }

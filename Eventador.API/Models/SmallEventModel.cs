@@ -1,9 +1,10 @@
 ﻿using Eventador.Domain;
+using System;
 
 namespace Eventador.API.Models
 {
     /// <summary>
-    /// Упрощенная модель события
+    /// Упрощенная модель события для представления в общем списке событий (при поиске)
     /// </summary>
     public class SmallEventModel
     {
@@ -23,6 +24,11 @@ namespace Eventador.API.Models
         public string Description { get; set; }
 
         /// <summary>
+        /// Дата начала
+        /// </summary>
+        public DateTime StartDate { get; set; }
+
+        /// <summary>
         /// Заголовочная картинка
         /// </summary>
         public string TitleImageUrl { get; set; }
@@ -39,6 +45,7 @@ namespace Eventador.API.Models
                 Id = evnt.Id,
                 Title = evnt.Title,
                 Description = evnt.Description,
+                StartDate = evnt.StartDate,
                 TitleImageUrl = evnt.TitleImageUrl
             };
         }

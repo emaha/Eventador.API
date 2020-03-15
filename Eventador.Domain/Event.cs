@@ -79,6 +79,11 @@ namespace Eventador.Domain
         public decimal Price { get; set; }
 
         /// <summary>
+        /// Контактные номера телефонов
+        /// </summary>
+        //public string[] ContactPhone { get; set; }
+
+        /// <summary>
         /// Регион
         /// </summary>
         [Column("region_id")]

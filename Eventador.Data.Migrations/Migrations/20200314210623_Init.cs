@@ -28,6 +28,7 @@ namespace Eventador.Data.Migrations.Migrations
                     lat = table.Column<float>(nullable: true),
                     lon = table.Column<float>(nullable: true),
                     create_date = table.Column<DateTime>(nullable: false),
+                    change_date = table.Column<DateTime>(nullable: false),
                     author_id = table.Column<int>(nullable: false),
                     access_type = table.Column<int>(nullable: false)
                 },
@@ -49,6 +50,21 @@ namespace Eventador.Data.Migrations.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_marks", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "participations",
+                columns: table => new
+                {
+                    id = table.Column<long>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    user_id = table.Column<long>(nullable: false),
+                    event_id = table.Column<long>(nullable: false),
+                    create_date = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_participations", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -81,6 +97,9 @@ namespace Eventador.Data.Migrations.Migrations
 
             migrationBuilder.DropTable(
                 name: "marks");
+
+            migrationBuilder.DropTable(
+                name: "participations");
 
             migrationBuilder.DropTable(
                 name: "users");

@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Eventador.Data.Migrations.Migrations
 {
     [DbContext(typeof(EventadorDbContext))]
-    [Migration("20200308225546_Init")]
+    [Migration("20200314210623_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -40,6 +40,10 @@ namespace Eventador.Data.Migrations.Migrations
                     b.Property<int>("AuthorId")
                         .HasColumnName("author_id")
                         .HasColumnType("integer");
+
+                    b.Property<DateTime>("ChangeDate")
+                        .HasColumnName("change_date")
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnName("create_date")
@@ -121,6 +125,31 @@ namespace Eventador.Data.Migrations.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("marks");
+                });
+
+            modelBuilder.Entity("Eventador.Domain.Participation", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("id")
+                        .HasColumnType("bigint")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnName("create_date")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<long>("EventId")
+                        .HasColumnName("event_id")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("UserId")
+                        .HasColumnName("user_id")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("participations");
                 });
 
             modelBuilder.Entity("Eventador.Domain.User", b =>

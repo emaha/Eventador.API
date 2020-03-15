@@ -282,7 +282,14 @@
         </member>
         <member name="M:Eventador.API.Controllers.ParticipationController.GetByEventId(System.Int64)">
             <summary>
-            Получить список людей зарегистрированных на событие по Id события
+            Получить список людей зарегистрированных на событие по его Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Eventador.API.Controllers.ParticipationController.GetByUserId(System.Int64)">
+            <summary>
+            Получить события в которых участвует пользователь
             </summary>
             <param name="id"></param>
             <returns></returns>
@@ -291,14 +298,14 @@
             <summary>
             Зарегистрироваться на событие
             </summary>
-            <param name="id"></param>
+            <param name="eventId"></param>
             <returns></returns>
         </member>
         <member name="M:Eventador.API.Controllers.ParticipationController.Unregister(System.Int64)">
             <summary>
             Отписаться от события
             </summary>
-            <param name="id"></param>
+            <param name="eventId"></param>
             <returns></returns>
         </member>
         <member name="T:Eventador.API.Controllers.UserController">
@@ -514,7 +521,7 @@
         </member>
         <member name="T:Eventador.API.Models.SmallEventModel">
             <summary>
-            Упрощенная модель события
+            Упрощенная модель события для представления в общем списке событий (при поиске)
             </summary>
         </member>
         <member name="P:Eventador.API.Models.SmallEventModel.Id">
@@ -530,6 +537,11 @@
         <member name="P:Eventador.API.Models.SmallEventModel.Description">
             <summary>
             Описание
+            </summary>
+        </member>
+        <member name="P:Eventador.API.Models.SmallEventModel.StartDate">
+            <summary>
+            Дата начала
             </summary>
         </member>
         <member name="P:Eventador.API.Models.SmallEventModel.TitleImageUrl">

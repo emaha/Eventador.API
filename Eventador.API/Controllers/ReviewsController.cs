@@ -13,7 +13,7 @@ namespace Eventador.API.Controllers
     /// </summary>
     [ApiController]
     [Route("[controller]")]
-    public class FeedBackController : ControllerBase
+    public class ReviewsController : ControllerBase
     {
         private readonly IMarkService _markService;
 
@@ -21,7 +21,7 @@ namespace Eventador.API.Controllers
         /// ctor
         /// </summary>
         /// <param name="markService"></param>
-        public FeedBackController(IMarkService markService)
+        public ReviewsController(IMarkService markService)
         {
             _markService = markService;
         }

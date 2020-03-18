@@ -13,7 +13,7 @@ namespace Eventador.API.Controllers
     /// </summary>
     [ApiController]
     [Route("[controller]")]
-    public class ParticipationController : ControllerBase
+    public class ParticipationsController : ControllerBase
     {
         private readonly IParticipationService _participationService;
         private readonly IEventService _eventService;
@@ -21,7 +21,7 @@ namespace Eventador.API.Controllers
         /// <summary>
         /// ctor
         /// </summary>
-        public ParticipationController(
+        public ParticipationsController(
             IEventService eventService,
             IParticipationService participationService
             )

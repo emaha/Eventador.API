@@ -106,250 +106,245 @@
         </member>
         <member name="T:Eventador.API.Controllers.BaseController">
             <summary>
-            Базовый контроллер с содержание информации о пользователе
+            Базовый контроллер с содержанием информации о пользователе
             </summary>
         </member>
-        <member name="T:Eventador.API.Controllers.EventController">
+        <member name="T:Eventador.API.Controllers.EventsController">
             <summary>
             Контроллер событий
             </summary>
         </member>
-        <member name="M:Eventador.API.Controllers.EventController.#ctor(Eventador.Services.Contract.IEventService)">
+        <member name="M:Eventador.API.Controllers.EventsController.#ctor(Eventador.Services.Contract.IEventService)">
             <summary>
             ctor
             </summary>
             <param name="eventService"></param>
         </member>
-        <member name="M:Eventador.API.Controllers.EventController.GetById(System.Int64)">
+        <member name="M:Eventador.API.Controllers.EventsController.GetById(System.Int64)">
             <summary>
             Получить по id
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:Eventador.API.Controllers.EventController.GetEventsByRegion(System.Int64)">
+        <member name="M:Eventador.API.Controllers.EventsController.GetEventsByRegion(System.Int64)">
             <summary>
             Получить события в регионе (рядом)
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Eventador.API.Controllers.EventController.GetEventsByAuthor(System.Int64)">
+        <member name="M:Eventador.API.Controllers.EventsController.GetEventsByAuthor(System.Int64)">
             <summary>
             Получить события определённого пользователя
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Eventador.API.Controllers.EventController.CreateEvent(Eventador.Domain.Requests.EventCreateRequest)">
+        <member name="M:Eventador.API.Controllers.EventsController.CreateEvent(Eventador.Domain.Requests.EventCreateRequest)">
             <summary>
             Создание события
             </summary>
             <param name="request"></param>
             <returns></returns>
         </member>
-        <member name="M:Eventador.API.Controllers.EventController.UpdateEvent(Eventador.Domain.Requests.EventUpdateRequest)">
+        <member name="M:Eventador.API.Controllers.EventsController.UpdateEvent(Eventador.Domain.Requests.EventUpdateRequest)">
             <summary>
             Изменение события
             </summary>
             <param name="request"></param>
             <returns></returns>
         </member>
-        <member name="M:Eventador.API.Controllers.EventController.DeleteEvent(System.Int64)">
+        <member name="M:Eventador.API.Controllers.EventsController.DeleteEvent(System.Int64)">
             <summary>
             Удаление события
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:Eventador.API.Controllers.EventController.ActivateEvent(System.Int64)">
+        <member name="M:Eventador.API.Controllers.EventsController.ActivateEvent(System.Int64)">
             <summary>
             Активация события
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:Eventador.API.Controllers.EventController.FinishEvent(System.Int64)">
+        <member name="M:Eventador.API.Controllers.EventsController.FinishEvent(System.Int64)">
             <summary>
             Завершение события
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:Eventador.API.Controllers.EventController.SuspendEvent(System.Int64)">
+        <member name="M:Eventador.API.Controllers.EventsController.SuspendEvent(System.Int64)">
             <summary>
             Приостановка события
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:Eventador.API.Controllers.EventController.CancelEvent(System.Int64)">
+        <member name="M:Eventador.API.Controllers.EventsController.CancelEvent(System.Int64)">
             <summary>
             Отмена события
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="T:Eventador.API.Controllers.FeedBackController">
-            <summary>
-            Контроллер обратной связи
-            </summary>
-        </member>
-        <member name="M:Eventador.API.Controllers.FeedBackController.#ctor(Eventador.Services.Contract.IMarkService)">
-            <summary>
-            ctor
-            </summary>
-            <param name="markService"></param>
-        </member>
-        <member name="M:Eventador.API.Controllers.FeedBackController.RateEvent(Eventador.Domain.Requests.RateEventCreateRequest)">
-            <summary>
-            Оценить событие
-            </summary>
-            <param name="request"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Eventador.API.Controllers.FeedBackController.GetEventFeedback(System.Int64)">
-            <summary>
-            Получить отзывы о событии
-            </summary>
-            <param name="id"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Eventador.API.Controllers.FeedBackController.GetPersonRating(System.Int64)">
-            <summary>
-            Получить рейтинг пользователя
-            </summary>
-            <param name="id"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Eventador.API.Controllers.FeedBackController.GetEventRating(System.Int64)">
-            <summary>
-            Получить рейтинг события
-            </summary>
-            <param name="id"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Eventador.API.Controllers.FeedBackController.ComplainEvent(Eventador.Domain.Requests.ComplaintCreateRequest)">
-            <summary>
-            Пожаловаться на событие
-            </summary>
-            <param name="request"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Eventador.API.Controllers.FeedBackController.ComplainPerson(Eventador.Domain.Requests.ComplaintCreateRequest)">
-            <summary>
-            Пожаловаться на пользователя
-            </summary>
-            <param name="request"></param>
-            <returns></returns>
-        </member>
-        <member name="T:Eventador.API.Controllers.ManagementController">
-            <summary>
-            Контроллер управления
-            </summary>
-        </member>
-        <member name="M:Eventador.API.Controllers.ManagementController.BlockUser(System.Int64)">
-            <summary>
-            Заблокировать пользователя
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Eventador.API.Controllers.ManagementController.UnblockUser(System.Int64)">
-            <summary>
-            Разблокировать пользователя
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Eventador.API.Controllers.ManagementController.BlockEvent(System.Int64)">
+        <member name="M:Eventador.API.Controllers.EventsController.BlockEvent(System.Int64)">
             <summary>
             Заблокировать событие
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Eventador.API.Controllers.ManagementController.UnblockEvent(System.Int64)">
+        <member name="M:Eventador.API.Controllers.EventsController.UnblockEvent(System.Int64)">
             <summary>
             Разблокировать событие
             </summary>
             <returns></returns>
         </member>
-        <member name="T:Eventador.API.Controllers.ParticipationController">
+        <member name="T:Eventador.API.Controllers.ParticipationsController">
             <summary>
             Контроллер участия (добавление в список участников события)
             </summary>
         </member>
-        <member name="M:Eventador.API.Controllers.ParticipationController.#ctor(Eventador.Services.Contract.IEventService,Eventador.Services.Contract.IParticipationService)">
+        <member name="M:Eventador.API.Controllers.ParticipationsController.#ctor(Eventador.Services.Contract.IEventService,Eventador.Services.Contract.IParticipationService)">
             <summary>
             ctor
             </summary>
         </member>
-        <member name="M:Eventador.API.Controllers.ParticipationController.GetByEventId(System.Int64)">
+        <member name="M:Eventador.API.Controllers.ParticipationsController.GetByEventId(System.Int64)">
             <summary>
             Получить список людей зарегистрированных на событие по его Id
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:Eventador.API.Controllers.ParticipationController.GetByUserId(System.Int64)">
+        <member name="M:Eventador.API.Controllers.ParticipationsController.GetByUserId(System.Int64)">
             <summary>
             Получить события в которых участвует пользователь
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:Eventador.API.Controllers.ParticipationController.Register(System.Int64)">
+        <member name="M:Eventador.API.Controllers.ParticipationsController.Register(System.Int64)">
             <summary>
             Зарегистрироваться на событие
             </summary>
             <param name="eventId"></param>
             <returns></returns>
         </member>
-        <member name="M:Eventador.API.Controllers.ParticipationController.Unregister(System.Int64)">
+        <member name="M:Eventador.API.Controllers.ParticipationsController.Unregister(System.Int64)">
             <summary>
             Отписаться от события
             </summary>
             <param name="eventId"></param>
             <returns></returns>
         </member>
-        <member name="T:Eventador.API.Controllers.UserController">
+        <member name="T:Eventador.API.Controllers.ReviewsController">
+            <summary>
+            Контроллер обратной связи
+            </summary>
+        </member>
+        <member name="M:Eventador.API.Controllers.ReviewsController.#ctor(Eventador.Services.Contract.IMarkService)">
+            <summary>
+            ctor
+            </summary>
+            <param name="markService"></param>
+        </member>
+        <member name="M:Eventador.API.Controllers.ReviewsController.RateEvent(Eventador.Domain.Requests.RateEventCreateRequest)">
+            <summary>
+            Оценить событие
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Eventador.API.Controllers.ReviewsController.GetEventFeedback(System.Int64)">
+            <summary>
+            Получить отзывы о событии
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Eventador.API.Controllers.ReviewsController.GetPersonRating(System.Int64)">
+            <summary>
+            Получить рейтинг пользователя
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Eventador.API.Controllers.ReviewsController.GetEventRating(System.Int64)">
+            <summary>
+            Получить рейтинг события
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Eventador.API.Controllers.ReviewsController.ComplainEvent(Eventador.Domain.Requests.ComplaintCreateRequest)">
+            <summary>
+            Пожаловаться на событие
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Eventador.API.Controllers.ReviewsController.ComplainPerson(Eventador.Domain.Requests.ComplaintCreateRequest)">
+            <summary>
+            Пожаловаться на пользователя
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Eventador.API.Controllers.UsersController">
             <summary>
             Контроллер пользователей
             </summary>
         </member>
-        <member name="M:Eventador.API.Controllers.UserController.#ctor(Eventador.Services.Contract.IUserService)">
+        <member name="M:Eventador.API.Controllers.UsersController.#ctor(Eventador.Services.Contract.IUserService)">
             <summary>
             ctor
             </summary>
             <param name="userService"></param>
         </member>
-        <member name="M:Eventador.API.Controllers.UserController.Get(System.Int64)">
+        <member name="M:Eventador.API.Controllers.UsersController.Get(System.Int64)">
             <summary>
             Получить пользователя
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:Eventador.API.Controllers.UserController.Create(Eventador.Domain.Requests.UserCreateRequest)">
+        <member name="M:Eventador.API.Controllers.UsersController.Create(Eventador.Domain.Requests.UserCreateRequest)">
             <summary>
             Создать пользователя
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Eventador.API.Controllers.UserController.Update(Eventador.Domain.Requests.UserUpdateRequest)">
+        <member name="M:Eventador.API.Controllers.UsersController.Update(Eventador.Domain.Requests.UserUpdateRequest)">
             <summary>
             Обновить данные пользователя
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Eventador.API.Controllers.UserController.Subscribe(System.Int64)">
+        <member name="M:Eventador.API.Controllers.UsersController.Subscribe(System.Int64)">
             <summary>
             Подписаться
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:Eventador.API.Controllers.UserController.Unsubscribe(System.Int64)">
+        <member name="M:Eventador.API.Controllers.UsersController.Unsubscribe(System.Int64)">
             <summary>
             Отписаться
             </summary>
             <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Eventador.API.Controllers.UsersController.BlockUser(System.Int64)">
+            <summary>
+            Заблокировать пользователя
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Eventador.API.Controllers.UsersController.UnblockUser(System.Int64)">
+            <summary>
+            Разблокировать пользователя
+            </summary>
             <returns></returns>
         </member>
         <member name="T:Eventador.API.Middlewares.IdentityNameEnrichLogMiddleware">

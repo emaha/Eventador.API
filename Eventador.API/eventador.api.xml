@@ -109,6 +109,16 @@
             Базовый контроллер с содержанием информации о пользователе
             </summary>
         </member>
+        <member name="P:Eventador.API.Controllers.BaseController.Username">
+            <summary>
+            Имя пользователя
+            </summary>
+        </member>
+        <member name="P:Eventador.API.Controllers.BaseController.UserId">
+            <summary>
+            Id пользователя
+            </summary>
+        </member>
         <member name="T:Eventador.API.Controllers.EventsController">
             <summary>
             Контроллер событий

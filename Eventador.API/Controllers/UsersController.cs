@@ -11,7 +11,7 @@ namespace Eventador.API.Controllers
     /// </summary>
     [ApiController]
     [Route("[controller]")]
-    public class UsersController : ControllerBase
+    public class UsersController : BaseController
     {
         private readonly IUserService _userService;
 
@@ -32,7 +32,10 @@ namespace Eventador.API.Controllers
         [HttpGet("{id}")]
         public async Task<UserResponseModel> Get(long id)
         {
-            return null;
+            var user = await _userService.GetById(id);
+            var model = UserResponseModel.Create(user);
+
+            return model;
         }
 
         /// <summary>

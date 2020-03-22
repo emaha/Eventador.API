@@ -22,7 +22,7 @@ namespace Eventador.API.Controllers
     /// </summary>
     [ApiController]
     [Route("[controller]")]
-    public class AuthController : ControllerBase
+    public class AuthController : BaseController
     {
         private readonly IUserService _userService;
         private readonly ITokenWithRefreshService _tokenWithRefreshService;

@@ -13,7 +13,7 @@ namespace Eventador.API.Controllers
     /// </summary>
     [ApiController]
     [Route("[controller]")]
-    public class ReviewsController : ControllerBase
+    public class ReviewsController : BaseController
     {
         private readonly IMarkService _markService;
 

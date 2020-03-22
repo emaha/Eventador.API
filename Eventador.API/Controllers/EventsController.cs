@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Eventador.Domain;
 using Eventador.Domain.Requests;
 using Microsoft.AspNetCore.Authorization;
+using System;
 
 namespace Eventador.API.Controllers
 {
@@ -14,8 +15,8 @@ namespace Eventador.API.Controllers
     /// </summary>
     [ApiController]
     [Route("[controller]")]
-    //[Authorize]
-    public class EventsController : ControllerBase
+    [Authorize]
+    public class EventsController : BaseController
     {
         private readonly IEventService _eventService;
 
@@ -50,6 +51,8 @@ namespace Eventador.API.Controllers
         public async Task<SmallEventModel[]> GetEventsByRegion(long id)
         {
             var events = await _eventService.GetByRegion(id);
+
+            Console.WriteLine($"Name: {Username}\tID: {UserId}");
 
             return events.Select(SmallEventModel.Create).ToArray();
         }

@@ -199,6 +199,8 @@ namespace Eventador.API
             //    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
             //});
 
+            app.UseSerilogRequestLogging();
+
             app.UseResponseCompression();
             app.UseRequestLocalization();
 

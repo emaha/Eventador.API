@@ -78,6 +78,7 @@ namespace Eventador.API.Controllers
         public async Task<IActionResult> CreateEvent(EventCreateRequest request)
         {
             var createdEvent = Event.Create(request);
+            createdEvent.AuthorId = UserId;
             await _eventService.Add(createdEvent);
 
             return Ok();

@@ -86,8 +86,12 @@ namespace Eventador.API
 
             // Конфигурация БД контекста
             string connectionString = Configuration["DbConfig:DbConnectionStrings:Eventador"];
-            services.AddDbContext<EventadorDbContext>(options => options.UseNpgsql(connectionString
-                    , x => x.MigrationsAssembly("Eventador.Data.Migrations")));
+            services.AddDbContext<EventadorDbContext>(options => 
+            options.UseNpgsql(connectionString, x =>
+            {
+                x.MigrationsAssembly("Eventador.Data.Migrations");
+                x.SetPostgresVersion(9, 6);
+            }));
 
             // Добавление компрессии на сайт с использованием Gzip
             //

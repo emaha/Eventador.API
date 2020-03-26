@@ -31,12 +31,6 @@ namespace Eventador.Domain
         public string Description { get; set; }
 
         /// <summary>
-        /// Дополнительная информация
-        /// </summary>
-        [Column("additional_info")]
-        public string AdditionalInfo { get; set; }
-
-        /// <summary>
         ///
         /// </summary>
         [Column("title_image_url")]
@@ -117,7 +111,7 @@ namespace Eventador.Domain
         /// Id аккаунта создателя
         /// </summary>
         [Column("author_id")]
-        public int AuthorId { get; set; }
+        public long AuthorId { get; set; }
 
         //public string Route{get;set;} // набор точек, путь
 
@@ -136,7 +130,6 @@ namespace Eventador.Domain
             {
                 Title = request.Title,
                 Description = request.Description,
-                AdditionalInfo = request.AdditionalInfo,
                 AccessType = request.AccessType,
                 StartDate = request.StartDate,
                 EndDate = request.EndDate,

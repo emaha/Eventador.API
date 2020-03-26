@@ -34,6 +34,11 @@ namespace Eventador.API.Models
         public string TitleImageUrl { get; set; }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public long AuthorId { get; set; }
+
+        /// <summary>
         /// Создать из запроса
         /// </summary>
         /// <param name="evnt"></param>
@@ -46,7 +51,8 @@ namespace Eventador.API.Models
                 Title = evnt.Title,
                 Description = evnt.Description,
                 StartDate = evnt.StartDate,
-                TitleImageUrl = evnt.TitleImageUrl
+                TitleImageUrl = evnt.TitleImageUrl,
+                AuthorId = evnt.AuthorId
             };
         }
     }

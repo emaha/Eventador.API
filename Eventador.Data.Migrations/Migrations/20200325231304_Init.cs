@@ -13,7 +13,7 @@ namespace Eventador.Data.Migrations.Migrations
                 columns: table => new
                 {
                     id = table.Column<long>(nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
                     title = table.Column<string>(nullable: true),
                     description = table.Column<string>(nullable: true),
                     additional_info = table.Column<string>(nullable: true),
@@ -42,7 +42,7 @@ namespace Eventador.Data.Migrations.Migrations
                 columns: table => new
                 {
                     id = table.Column<long>(nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
                     value = table.Column<int>(nullable: false),
                     comment = table.Column<string>(nullable: true),
                     create_date = table.Column<DateTime>(nullable: false)
@@ -57,7 +57,7 @@ namespace Eventador.Data.Migrations.Migrations
                 columns: table => new
                 {
                     id = table.Column<long>(nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
                     user_id = table.Column<long>(nullable: false),
                     event_id = table.Column<long>(nullable: false),
                     create_date = table.Column<DateTime>(nullable: false)
@@ -72,7 +72,7 @@ namespace Eventador.Data.Migrations.Migrations
                 columns: table => new
                 {
                     id = table.Column<long>(nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
                     last_name = table.Column<string>(nullable: true),
                     first_name = table.Column<string>(nullable: true),
                     middle_name = table.Column<string>(nullable: true),

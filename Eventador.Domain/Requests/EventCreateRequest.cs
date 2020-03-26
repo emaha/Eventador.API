@@ -10,7 +10,6 @@ namespace Eventador.Domain.Requests
     {
         public string Title { get; set; }
         public string Description { get; set; }
-        public string AdditionalInfo { get; set; }
         public string TitleImageUrl { get; set; }
         public string ImageUrls { get; set; }
         public EventType EventType { get; set; }
@@ -21,5 +20,6 @@ namespace Eventador.Domain.Requests
         public decimal Price { get; set; }
         public float? Lat { get; set; }
         public float? Lon { get; set; }
+        public long AuthorId { get; set; }
     }
 }

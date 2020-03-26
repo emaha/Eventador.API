@@ -554,6 +554,11 @@
             Заголовочная картинка
             </summary>
         </member>
+        <member name="P:Eventador.API.Models.SmallEventModel.AuthorId">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="M:Eventador.API.Models.SmallEventModel.Create(Eventador.Domain.Event)">
             <summary>
             Создать из запроса

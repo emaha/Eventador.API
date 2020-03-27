@@ -25,6 +25,19 @@ namespace Eventador.API.Controllers
         }
 
         /// <summary>
+        /// Получить пользователя по токену(т.е. свои)
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("Token")]
+        public async Task<UserResponseModel> GetByToken()
+        {
+            var user = await _userService.GetById(UserId);
+            var model = UserResponseModel.Create(user);
+
+            return model;
+        }
+
+        /// <summary>
         /// Получить пользователя
         /// </summary>
         /// <param name="id"></param>
@@ -72,7 +85,7 @@ namespace Eventador.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpPost("Subscriber/{id}")]
+        [HttpPost("{id}/Subscribe")]
         public async Task<IActionResult> Subscribe(long id)
         {
             return Ok();
@@ -83,7 +96,7 @@ namespace Eventador.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpPost("Unsubscribe/{id}")]
+        [HttpPost("{id}/Unsubscribe")]
         public async Task<IActionResult> Unsubscribe(long id)
         {
             return Ok();

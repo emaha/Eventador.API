@@ -26,11 +26,6 @@ namespace Eventador.API.Models
         public string Description { get; set; }
 
         /// <summary>
-        /// Дополнительная информация
-        /// </summary>
-        public string AdditionalInfo { get; set; }
-
-        /// <summary>
         /// Заголовочная картинка
         /// </summary>
         public string TitleImageUrl { get; set; }
@@ -88,7 +83,7 @@ namespace Eventador.API.Models
         /// <summary>
         /// Id аккаунта создателя
         /// </summary>
-        public int AuthorId { get; set; }
+        public long AuthorId { get; set; }
 
         //public string Route{get;set;} // набор точек, путь
 
@@ -109,7 +104,21 @@ namespace Eventador.API.Models
             return new EventModel
             {
                 Id = evnt.Id,
-                Title = evnt.Title
+                Title = evnt.Title,
+                Description = evnt.Description,
+                AccessType = evnt.AccessType,
+                AuthorId = evnt.AuthorId,
+                CreateDate = evnt.CreateDate,
+                StartDate = evnt.StartDate,
+                EndDate = evnt.EndDate,
+                EventStatus = evnt.EventStatus,
+                EventType = evnt.EventType,
+                Price = evnt.Price,
+                RegionId = evnt.RegionId,
+                ImageUrls = evnt.ImageUrls,
+                Lat = evnt.Lat,
+                Lon = evnt.Lon,
+                TitleImageUrl = evnt.TitleImageUrl
             };
         }
     }

@@ -91,7 +91,7 @@ namespace Eventador.API.Controllers
         /// </summary>
         /// <param name="request">Запрос на обновление токена из refresh token</param>
         /// <returns></returns>
-        [HttpPost("Refresh")]
+        [HttpPost("RefreshToken")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
@@ -197,7 +197,7 @@ namespace Eventador.API.Controllers
         /// <returns></returns>
         private static Claim GetClaimLogin(IEnumerable<Claim> claims)
         {
-            return claims.FirstOrDefault(x => x.Type == ClaimsIdentity.DefaultNameClaimType);
+            return claims.FirstOrDefault(x => x.Type == "login");
         }
 
         /// <summary>
@@ -255,6 +255,7 @@ namespace Eventador.API.Controllers
             var claims = new List<Claim>
             {
                 new Claim(ClaimsIdentity.DefaultNameClaimType, user.FullName),
+                new Claim("login", user.Login),
                 new Claim("id", user.Id.ToString()),
             };
 

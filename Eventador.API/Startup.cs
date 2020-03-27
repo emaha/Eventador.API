@@ -132,6 +132,10 @@ namespace Eventador.API
 
         private void RegisterDistributedCache(IServiceCollection services)
         {
+            // На время разарбоки. На серваке надо поднимать контейнер с реддисом
+            services.AddDistributedMemoryCache();
+            return;
+
             if (Environment.IsDevelopment())
             {
                 services.AddDistributedMemoryCache();

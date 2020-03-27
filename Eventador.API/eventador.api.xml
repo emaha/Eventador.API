@@ -312,6 +312,12 @@
             </summary>
             <param name="userService"></param>
         </member>
+        <member name="M:Eventador.API.Controllers.UsersController.GetByToken">
+            <summary>
+            Получить пользователя по токену(т.е. свои)
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:Eventador.API.Controllers.UsersController.Get(System.Int64)">
             <summary>
             Получить пользователя
@@ -445,11 +451,6 @@
         <member name="P:Eventador.API.Models.EventModel.Description">
             <summary>
             Описание
-            </summary>
-        </member>
-        <member name="P:Eventador.API.Models.EventModel.AdditionalInfo">
-            <summary>
-            Дополнительная информация
             </summary>
         </member>
         <member name="P:Eventador.API.Models.EventModel.TitleImageUrl">

@@ -318,6 +318,13 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:Eventador.API.Controllers.UsersController.SignUp(Eventador.API.Requests.CredentialsRequest)">
+            <summary>
+            Получить пользователя
+            </summary>
+            <param name="request">Запрос на регистрацию</param>
+            <returns></returns>
+        </member>
         <member name="M:Eventador.API.Controllers.UsersController.Get(System.Int64)">
             <summary>
             Получить пользователя
@@ -463,12 +470,12 @@
             Список картинок отображаемых в деталях
             </summary>
         </member>
-        <member name="P:Eventador.API.Models.EventModel.EventType">
+        <member name="P:Eventador.API.Models.EventModel.Type">
             <summary>
             Id категорий к которым  относится событие
             </summary>
         </member>
-        <member name="P:Eventador.API.Models.EventModel.EventStatus">
+        <member name="P:Eventador.API.Models.EventModel.Status">
             <summary>
             Статус события
             </summary>
@@ -519,11 +526,11 @@
             </summary>
         </member>
         <member name="M:Eventador.API.Models.EventModel.Create(Eventador.Domain.Event)">
-             <summary>
-            
-             </summary>
-             <param name="evnt"></param>
-             <returns></returns>
+            <summary>
+            Создание модели
+            </summary>
+            <param name="evnt"></param>
+            <returns></returns>
         </member>
         <member name="T:Eventador.API.Models.SmallEventModel">
             <summary>

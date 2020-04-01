@@ -45,14 +45,14 @@ namespace Eventador.Domain
         /// <summary>
         /// Id категорий к которым  относится событие
         /// </summary>
-        [Column("event_type")]
-        public EventType EventType { get; set; }
+        [Column("type")]
+        public EventType Type { get; set; }
 
         /// <summary>
         /// Статус события
         /// </summary>
-        [Column("event_status")]
-        public EventStatus EventStatus { get; set; }
+        [Column("status")]
+        public EventStatus Status { get; set; }
 
         /// <summary>
         /// Дата начала
@@ -137,8 +137,8 @@ namespace Eventador.Domain
                 Price = request.Price,
                 Lat = request.Lat,
                 Lon = request.Lon,
-                EventType = request.EventType,
-                EventStatus = EventStatus.ACTIVE,
+                Type = request.EventType,
+                Status = EventStatus.ACTIVE,
                 CreateDate = DateTime.UtcNow,
                 ChangeDate = DateTime.UtcNow,
                 AuthorId = authorId
@@ -165,7 +165,7 @@ namespace Eventador.Domain
         /// </summary>
         public void Activate()
         {
-            EventStatus = EventStatus.ACTIVE;
+            Status = EventStatus.ACTIVE;
             ChangeDate = DateTime.UtcNow;
         }
 
@@ -174,7 +174,7 @@ namespace Eventador.Domain
         /// </summary>
         public void Finish()
         {
-            EventStatus = EventStatus.FINISHED;
+            Status = EventStatus.FINISHED;
             ChangeDate = DateTime.UtcNow;
         }
 
@@ -183,7 +183,7 @@ namespace Eventador.Domain
         /// </summary>
         public void Suspend()
         {
-            EventStatus = EventStatus.SUSPENDED;
+            Status = EventStatus.SUSPENDED;
             ChangeDate = DateTime.UtcNow;
         }
 
@@ -192,7 +192,7 @@ namespace Eventador.Domain
         /// </summary>
         public void Cancel()
         {
-            EventStatus = EventStatus.CANCELED;
+            Status = EventStatus.CANCELED;
             ChangeDate = DateTime.UtcNow;
         }
     }

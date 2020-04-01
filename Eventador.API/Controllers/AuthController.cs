@@ -47,6 +47,7 @@ namespace Eventador.API.Controllers
         /// </summary>
         /// <param name="request"></param>
         /// <returns>Токен</returns>
+        [AllowAnonymous]
         [HttpPost("SignIn")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

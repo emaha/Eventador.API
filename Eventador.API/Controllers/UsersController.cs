@@ -1,4 +1,6 @@
-﻿using Eventador.Domain.Requests;
+﻿using Eventador.API.Requests;
+using Eventador.Domain;
+using Eventador.Domain.Requests;
 using Eventador.Services.Contract;
 using Eventador.Services.Contract.Api;
 using Microsoft.AspNetCore.Mvc;
@@ -35,6 +37,31 @@ namespace Eventador.API.Controllers
             var model = UserResponseModel.Create(user);
 
             return model;
+        }
+
+        /// <summary>
+        /// Получить пользователя
+        /// </summary>
+        /// <param name="request">Запрос на регистрацию</param>
+        /// <returns></returns>
+        [HttpPost("SignUp")]
+        public async Task<ActionResult> SignUp(CredentialsRequest request)
+        {
+            var user = await _userService.GetByLogin(request.Username);
+            if(user != null)
+            {
+                return BadRequest("User already exist");
+            }
+
+            var newUser = new User 
+            {
+                Login = request.Username,
+                Password = request.Password// TODO: сделать hash
+            };
+
+            await _userService.Add(newUser);
+
+            return Ok();
         }
 
         /// <summary>

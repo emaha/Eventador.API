@@ -38,12 +38,12 @@ namespace Eventador.API.Models
         /// <summary>
         /// Id категорий к которым  относится событие
         /// </summary>
-        public EventType EventType { get; set; }
+        public EventType Type { get; set; }
 
         /// <summary>
         /// Статус события
         /// </summary>
-        public EventStatus EventStatus { get; set; }
+        public EventStatus Status { get; set; }
 
         /// <summary>
         /// Дата начала
@@ -93,7 +93,7 @@ namespace Eventador.API.Models
         public AccessType AccessType { get; set; }
 
         /// <summary>
-        ///
+        /// Создание модели
         /// </summary>
         /// <param name="evnt"></param>
         /// <returns></returns>
@@ -111,8 +111,8 @@ namespace Eventador.API.Models
                 CreateDate = evnt.CreateDate,
                 StartDate = evnt.StartDate,
                 EndDate = evnt.EndDate,
-                EventStatus = evnt.EventStatus,
-                EventType = evnt.EventType,
+                Status = evnt.Status,
+                Type = evnt.Type,
                 Price = evnt.Price,
                 RegionId = evnt.RegionId,
                 ImageUrls = evnt.ImageUrls,

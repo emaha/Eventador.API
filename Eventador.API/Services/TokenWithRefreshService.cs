@@ -83,7 +83,7 @@ namespace Eventador.API.Services
         /// <returns></returns>
         private static Claim GetClaimLogin(ClaimsIdentity claimsIdentity)
         {
-            return claimsIdentity.Claims.FirstOrDefault(x => x.Type == ClaimsIdentity.DefaultNameClaimType);
+            return claimsIdentity.Claims.FirstOrDefault(x => x.Type == "login");
         }
 
         /// <summary>

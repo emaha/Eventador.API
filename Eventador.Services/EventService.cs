@@ -1,9 +1,9 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
-using Eventador.Common.Services;
+﻿using Eventador.Common.Services;
 using Eventador.Data.Contract;
 using Eventador.Domain;
 using Eventador.Services.Contract;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Eventador.Services
 {
@@ -18,7 +18,10 @@ namespace Eventador.Services
 
         public async Task<Event[]> GetByRegion(long regionId)
         {
-            return await _repository.GetAll(x => x.RegionId == regionId);
+            return await _repository.GetAll(x =>
+                x.RegionId == regionId &&
+                x.Status == Domain.Statuses.EventStatus.ACTIVE
+            );
         }
 
         public async Task<Event[]> GetByAuthorId(long id)

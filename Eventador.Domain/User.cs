@@ -47,6 +47,12 @@ namespace Eventador.Domain
         public string Password { get; set; }
 
         /// <summary>
+        /// Email
+        /// </summary>
+        //[Column("email")]
+        //public string Email { get; set; }
+
+        /// <summary>
         /// Флаг блокировки
         /// </summary>
         [Column("blocked")]
@@ -55,8 +61,8 @@ namespace Eventador.Domain
         /// <summary>
         /// Тип пользователя
         /// </summary>
-        [Column("user_type")]
-        public UserType UserType { get; set; }
+        [Column("type")]
+        public UserType Type { get; set; }
 
         /// <summary>
         /// Наименование организации (если есть)

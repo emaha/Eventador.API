@@ -3,15 +3,17 @@ using System;
 using Eventador.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Eventador.Data.Migrations.Migrations
 {
     [DbContext(typeof(EventadorDbContext))]
-    partial class EventadorDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200621214959_Init2")]
+    partial class Init2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

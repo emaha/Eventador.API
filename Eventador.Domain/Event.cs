@@ -155,6 +155,15 @@ namespace Eventador.Domain
 
             Title = request.Title;
             Description = request.Description;
+            AccessType = request.AccessType;
+            StartDate = request.StartDate;
+            EndDate = request.EndDate;
+            //RegionId = request.RegionId;
+            Price = request.Price;
+            Lat = request.Lat;
+            Lon = request.Lon;
+            Type = request.EventType;
+
             ChangeDate = DateTime.UtcNow;
 
             // TODO:

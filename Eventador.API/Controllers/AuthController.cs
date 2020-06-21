@@ -176,7 +176,7 @@ namespace Eventador.API.Controllers
 
         private string GeneratePassword(int length)
         {
-            // TODO:
+            // TODO: сделать генератор
 
             return "12345678";
         }

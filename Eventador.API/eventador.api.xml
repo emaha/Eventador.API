@@ -143,6 +143,12 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:Eventador.API.Controllers.EventsController.GetEventsBySearchRequest(System.String)">
+            <summary>
+            Получить события по поисковому запросу
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:Eventador.API.Controllers.EventsController.GetEventsByAuthor(System.Int64)">
             <summary>
             Получить события определённого пользователя

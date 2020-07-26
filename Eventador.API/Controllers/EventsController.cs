@@ -58,6 +58,23 @@ namespace Eventador.API.Controllers
         }
 
         /// <summary>
+        /// Получить события по поисковому запросу
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("Request")]
+        public async Task<SmallEventModel[]> GetEventsBySearchRequest(string request)
+        {
+            if (string.IsNullOrWhiteSpace(request))
+            {
+                var fakeResult = await _eventService.GetByRegion(1);
+                return fakeResult.Select(SmallEventModel.Create).ToArray();
+            }
+
+            var events = await _eventService.GetBySearchRequest(request);
+            return events.Select(SmallEventModel.Create).ToArray();
+        }
+
+        /// <summary>
         /// Получить события определённого пользователя
         /// </summary>
         /// <returns></returns>
@@ -75,13 +92,13 @@ namespace Eventador.API.Controllers
         /// <param name="request"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> CreateEvent(EventCreateRequest request)
+        public async Task<long> CreateEvent(EventCreateRequest request)
         {
             var createdEvent = Event.Create(request);
             createdEvent.AuthorId = UserId;
             await _eventService.Add(createdEvent);
 
-            return Ok();
+            return createdEvent.Id;
         }
 
         /// <summary>

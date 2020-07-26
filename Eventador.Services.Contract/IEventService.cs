@@ -29,5 +29,13 @@ namespace Eventador.Services.Contract
         /// <param name="ids"></param>
         /// <returns></returns>
         Task<Event[]> GetByIds(long[] ids);
+
+
+        /// <summary>
+        /// Получить события по поисковому запросу
+        /// </summary>
+        /// <param name="requset">зарпос</param>
+        /// <returns></returns>
+        Task<Event[]> GetBySearchRequest(string requset);
     }
 }

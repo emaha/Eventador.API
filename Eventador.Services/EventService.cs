@@ -33,5 +33,11 @@ namespace Eventador.Services
         {
             return await _repository.GetAll(x => ids.Contains(x.Id));
         }
+
+        public async Task<Event[]> GetBySearchRequest(string requset)
+        {
+            // TODO: сделать запрос
+            return await _repository.GetAll(x => x.Title.Contains(requset));
+        }
     }
 }

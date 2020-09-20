@@ -53,7 +53,7 @@ namespace Eventador.API.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<TokenModel>> SignIn(CredentialsRequest request)
         {
-            var identity = await GetIdentity(request.Username, request.Password);
+            var identity = await GetIdentity(request.Login, request.Password);
 
             if (identity == null)
             {

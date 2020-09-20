@@ -47,7 +47,7 @@ namespace Eventador.API.Controllers
         [HttpPost("SignUp")]
         public async Task<ActionResult> SignUp(CredentialsRequest request)
         {
-            var user = await _userService.GetByLogin(request.Username);
+            var user = await _userService.GetByLogin(request.Login);
             if(user != null)
             {
                 return BadRequest("User already exist");
@@ -55,7 +55,7 @@ namespace Eventador.API.Controllers
 
             var newUser = new User 
             {
-                Login = request.Username,
+                Login = request.Login,
                 Password = request.Password// TODO: сделать hash
             };
 

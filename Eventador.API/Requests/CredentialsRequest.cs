@@ -11,7 +11,7 @@ namespace Eventador.API.Requests
         /// Логин
         /// </summary>
         [Required]
-        public string Username { get; set; }
+        public string Login { get; set; }
 
         /// <summary>
         /// Пароль

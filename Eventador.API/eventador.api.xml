@@ -603,7 +603,7 @@
             Данные авторизации
             </summary>
         </member>
-        <member name="P:Eventador.API.Requests.CredentialsRequest.Username">
+        <member name="P:Eventador.API.Requests.CredentialsRequest.Login">
             <summary>
             Логин
             </summary>

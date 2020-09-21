@@ -613,6 +613,21 @@
             Пароль
             </summary>
         </member>
+        <member name="P:Eventador.API.Requests.CredentialsRequest.Lastname">
+            <summary>
+            Фамилия
+            </summary>
+        </member>
+        <member name="P:Eventador.API.Requests.CredentialsRequest.Firstname">
+            <summary>
+            Имя
+            </summary>
+        </member>
+        <member name="P:Eventador.API.Requests.CredentialsRequest.Email">
+            <summary>
+            Электронная почта
+            </summary>
+        </member>
         <member name="T:Eventador.API.Requests.RecoverPasswordRequest">
             <summary>
             Запрос на восстановление пароля

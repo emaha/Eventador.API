@@ -18,5 +18,20 @@ namespace Eventador.API.Requests
         /// </summary>
         [Required]
         public string Password { get; set; }
+
+        /// <summary>
+        /// Фамилия
+        /// </summary>
+        public string Lastname { get; set; }
+
+        /// <summary>
+        /// Имя
+        /// </summary>
+        public string Firstname { get; set; }
+
+        /// <summary>
+        /// Электронная почта
+        /// </summary>
+        public string Email { get; set; }
     }
 }

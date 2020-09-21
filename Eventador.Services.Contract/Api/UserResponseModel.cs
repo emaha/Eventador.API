@@ -30,6 +30,16 @@ namespace Eventador.Services.Contract.Api
         /// </summary>
         public string Phone { get; set; }
 
+        /// <summary>
+        /// Рейтинг пользователя (расчетный)
+        /// </summary>
+        public double Rating { get; set; }
+
+        /// <summary>
+        /// О себе
+        /// </summary>
+        public string AboutInfo { get; set; }
+
         public static UserResponseModel Create(User user)
         {
             return new UserResponseModel
@@ -39,7 +49,8 @@ namespace Eventador.Services.Contract.Api
                 Firstname = user.Firstname,
                 Middlename = user.MiddleName,
                 Phone = user.Phone,
-
+                Rating = new Random().NextDouble() * 5f,
+                AboutInfo = user.AboutInfo
             };
         }
     }

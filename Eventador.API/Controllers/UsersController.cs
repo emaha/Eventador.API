@@ -3,6 +3,7 @@ using Eventador.Domain;
 using Eventador.Domain.Requests;
 using Eventador.Services.Contract;
 using Eventador.Services.Contract.Api;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -12,6 +13,7 @@ namespace Eventador.API.Controllers
     /// Контроллер пользователей
     /// </summary>
     [ApiController]
+    [Authorize]
     [Route("[controller]")]
     public class UsersController : BaseController
     {
@@ -55,8 +57,12 @@ namespace Eventador.API.Controllers
 
             var newUser = new User 
             {
+                LastName = request.Lastname,
+                Firstname = request.Firstname,
+                AboutInfo = request.Email,
                 Login = request.Login,
                 Password = request.Password// TODO: сделать hash
+
             };
 
             await _userService.Add(newUser);

@@ -9,6 +9,9 @@ namespace Eventador.Domain.Types
     /// </summary>
     public enum ComplaintType
     {
-        NONE, ONE, TWO, THREE
+        None, 
+        One, 
+        Two, 
+        Three
     }
 }

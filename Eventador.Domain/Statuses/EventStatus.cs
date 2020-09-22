@@ -8,26 +8,26 @@
         /// <summary>
         /// Без статуса
         /// </summary>
-        NONE = 0,
+        None = 0,
 
         /// <summary>
         /// Активен
         /// </summary>
-        ACTIVE = 1,
+        Active = 1,
 
         /// <summary>
         /// Приостановлено
         /// </summary>
-        SUSPENDED = 2,
+        Suspended = 2,
 
         /// <summary>
         /// Завершен
         /// </summary>
-        FINISHED = 3,
+        Finished = 3,
 
         /// <summary>
         /// Отменено
         /// </summary>
-        CANCELED = 4
+        Canceled = 4
     }
 }

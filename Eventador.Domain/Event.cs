@@ -138,7 +138,7 @@ namespace Eventador.Domain
                 Lat = request.Lat,
                 Lon = request.Lon,
                 Type = request.EventType,
-                Status = EventStatus.ACTIVE,
+                Status = EventStatus.Active,
                 CreateDate = DateTime.UtcNow,
                 ChangeDate = DateTime.UtcNow,
                 AuthorId = authorId
@@ -174,7 +174,7 @@ namespace Eventador.Domain
         /// </summary>
         public void Activate()
         {
-            Status = EventStatus.ACTIVE;
+            Status = EventStatus.Active;
             ChangeDate = DateTime.UtcNow;
         }
 
@@ -183,7 +183,7 @@ namespace Eventador.Domain
         /// </summary>
         public void Finish()
         {
-            Status = EventStatus.FINISHED;
+            Status = EventStatus.Finished;
             ChangeDate = DateTime.UtcNow;
         }
 
@@ -192,7 +192,7 @@ namespace Eventador.Domain
         /// </summary>
         public void Suspend()
         {
-            Status = EventStatus.SUSPENDED;
+            Status = EventStatus.Suspended;
             ChangeDate = DateTime.UtcNow;
         }
 
@@ -201,7 +201,7 @@ namespace Eventador.Domain
         /// </summary>
         public void Cancel()
         {
-            Status = EventStatus.CANCELED;
+            Status = EventStatus.Canceled;
             ChangeDate = DateTime.UtcNow;
         }
     }

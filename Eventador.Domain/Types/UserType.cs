@@ -8,16 +8,16 @@
         /// <summary>
         /// Нопределён
         /// </summary>
-        NONE = 0,
+        None = 0,
 
         /// <summary>
         /// Физ.лицо
         /// </summary>
-        PERSON = 1,
+        Person = 1,
 
         /// <summary>
         /// Организация
         /// </summary>
-        ORGANIZATION = 2
+        Organization = 2
     }
 }

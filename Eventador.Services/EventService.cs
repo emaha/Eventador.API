@@ -20,7 +20,7 @@ namespace Eventador.Services
         {
             return await _repository.GetAll(x =>
                 x.RegionId == regionId &&
-                x.Status == Domain.Statuses.EventStatus.ACTIVE
+                x.Status == Domain.Statuses.EventStatus.Active
             );
         }
 

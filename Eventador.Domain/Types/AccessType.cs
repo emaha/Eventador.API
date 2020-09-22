@@ -8,16 +8,16 @@
         /// <summary>
         /// Общедоступный
         /// </summary>
-        PUBLIC = 0,
+        Public = 0,
 
         /// <summary>
         /// Видно друзьям
         /// </summary>
-        PRIVATE = 1,
+        Private = 1,
 
         /// <summary>
         /// Только по приглашению
         /// </summary>
-        INVITE = 2
+        Invite = 2
     }
 }

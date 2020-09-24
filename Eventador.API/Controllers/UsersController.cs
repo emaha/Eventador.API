@@ -47,6 +47,7 @@ namespace Eventador.API.Controllers
         /// <param name="request">Запрос на регистрацию</param>
         /// <returns></returns>
         [HttpPost("SignUp")]
+        [AllowAnonymous]
         public async Task<ActionResult> SignUp(CredentialsRequest request)
         {
             var user = await _userService.GetByLogin(request.Login);
